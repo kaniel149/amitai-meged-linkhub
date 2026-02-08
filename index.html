@@ -1,274 +1,777 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amitai Megged | אמיתי מגד - פסיכותרפיה מבוססת ראויות</title>
-    <meta name="description" content="אמיתי מגד - מטפל זוגי ומשפחתי, מחבר, מרצה. טיפול זוגי מבוסס מובחנות וראויות. ספרים, סדנאות, קורסים והכשרות.">
+    <meta name="description"
+        content="אמיתי מגד - מטפל זוגי ומשפחתי, מחבר, מרצה. טיפול זוגי מבוסס מובחנות וראויות. ספרים, סדנאות, קורסים והכשרות.">
     <meta property="og:title" content="Amitai Megged | אמיתי מגד">
     <meta property="og:description" content="פסיכותרפיה מבוססת ראויות - ספרים, סדנאות, קורסים והכשרות">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://link.megged.co.il">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9C%A8</text></svg>">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Secular+One&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Heebo:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+    <!-- Google Tag Manager (uncomment and replace GTM-XXXXXX with your container ID to activate)
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXX');</script>
+    -->
+
+    <!-- Facebook Pixel (uncomment and replace YOUR_PIXEL_ID to activate)
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+    -->
+
     <style>
+        /* ===== CSS Custom Properties ===== */
         :root {
-            --purple: #7a00df;
-            --purple-light: #9b3eed;
-            --purple-dark: #5a00a8;
-            --purple-glow: rgba(122, 0, 223, 0.15);
-            --purple-subtle: rgba(122, 0, 223, 0.06);
-            --gold: #c9a84c;
-            --gold-light: #e0c673;
-            --bg: #faf9f7;
-            --bg-card: #ffffff;
-            --text: #1a1a2e;
-            --text-secondary: #5a5a72;
-            --text-muted: #8a8a9a;
-            --border: rgba(0, 0, 0, 0.06);
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
-            --shadow-lg: 0 8px 30px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.04);
-            --shadow-purple: 0 4px 20px rgba(122, 0, 223, 0.15);
-            --radius: 16px;
-            --radius-sm: 10px;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --forest: #4A5D23;
+            --forest-dark: #3A4A1B;
+            --forest-light: #6B8033;
+            --sage: #8B9C6F;
+            --sage-light: #A8B892;
+            --teal: #2D5A5A;
+            --teal-light: #3D7A7A;
+            --cream: #F8F6F0;
+            --cream-warm: #F5F0E6;
+            --sand: #E8E0D0;
+            --gold: #C4A052;
+            --gold-light: #D4B872;
+            --charcoal: #2C2C2C;
+            --text: #1F1F1F;
+            --text-secondary: #4A4A4A;
+            --text-muted: #7A7A7A;
+            --white: #FFFFFF;
+            --shadow-soft: 0 4px 20px rgba(74, 93, 35, 0.08);
+            --shadow-medium: 0 8px 40px rgba(74, 93, 35, 0.12);
+            --shadow-glow: 0 0 60px rgba(74, 93, 35, 0.15);
+            --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.06);
+            --radius: 20px;
+            --radius-lg: 28px;
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --glass-bg: rgba(255, 255, 255, 0.72);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-blur: blur(16px);
         }
 
-        * {
+        /* Dark mode */
+        [data-theme="dark"] {
+            --cream: #0F1410;
+            --cream-warm: #141A14;
+            --sand: #1E2620;
+            --white: #1A2218;
+            --text: #E8E4DC;
+            --text-secondary: #B8B4AC;
+            --text-muted: #8A8680;
+            --charcoal: #E8E4DC;
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --shadow-medium: 0 8px 40px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 60px rgba(74, 93, 35, 0.25);
+            --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --glass-bg: rgba(30, 38, 32, 0.75);
+            --glass-border: rgba(74, 93, 35, 0.2);
+        }
+
+        /* ===== Reset & Base ===== */
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
         body {
-            font-family: 'Frank Ruhl Libre', 'David', serif;
-            background: var(--bg);
+            font-family: 'Heebo', sans-serif;
+            background: var(--cream);
             color: var(--text);
             min-height: 100vh;
-            line-height: 1.6;
+            line-height: 1.7;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            transition: background 0.5s ease, color 0.5s ease;
         }
 
-        /* Subtle background pattern */
-        body::before {
-            content: '';
+        /* ===== Custom Cursor (desktop only) ===== */
+        @media (hover: hover) and (pointer: fine) {
+            .cursor-ring {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 40px;
+                height: 40px;
+                border: 1.5px solid rgba(74, 93, 35, 0.4);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 10000;
+                transform: translate(-50%, -50%);
+                transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+                mix-blend-mode: difference;
+                opacity: 0;
+            }
+
+            .cursor-dot {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 6px;
+                height: 6px;
+                background: var(--forest);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 10000;
+                transform: translate(-50%, -50%);
+                mix-blend-mode: difference;
+                opacity: 0;
+            }
+
+            body:hover .cursor-ring,
+            body:hover .cursor-dot {
+                opacity: 1;
+            }
+
+            .cursor-ring.hovering {
+                width: 56px;
+                height: 56px;
+                border-color: var(--gold);
+                border-width: 2px;
+            }
+        }
+
+        @media (hover: none) {
+
+            .cursor-ring,
+            .cursor-dot {
+                display: none !important;
+            }
+        }
+
+        /* ===== Floating Particles (CSS-only) ===== */
+        .particles {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(ellipse at 20% 0%, var(--purple-glow) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 100%, rgba(201, 168, 76, 0.08) 0%, transparent 50%);
+            inset: 0;
             pointer-events: none;
             z-index: 0;
+            overflow: hidden;
         }
 
-        .container {
-            max-width: 480px;
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--sage-light);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: particleFloat linear infinite;
+        }
+
+        .particle:nth-child(1) { left: 8%; width: 3px; height: 3px; animation-duration: 28s; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 22%; width: 5px; height: 5px; animation-duration: 22s; animation-delay: -4s; opacity: 0.1; }
+        .particle:nth-child(3) { left: 40%; width: 3px; height: 3px; animation-duration: 30s; animation-delay: -8s; }
+        .particle:nth-child(4) { left: 55%; width: 4px; height: 4px; animation-duration: 25s; animation-delay: -2s; opacity: 0.12; }
+        .particle:nth-child(5) { left: 70%; width: 6px; height: 6px; animation-duration: 35s; animation-delay: -6s; opacity: 0.08; }
+        .particle:nth-child(6) { left: 85%; width: 3px; height: 3px; animation-duration: 20s; animation-delay: -10s; }
+        .particle:nth-child(7) { left: 95%; width: 4px; height: 4px; animation-duration: 26s; animation-delay: -3s; opacity: 0.1; }
+        .particle:nth-child(8) { left: 15%; width: 5px; height: 5px; animation-duration: 32s; animation-delay: -12s; opacity: 0.07; }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.15;
+            }
+            90% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateY(-20vh) translateX(30px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ===== Grain Overlay ===== */
+        .grain {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* ===== Top Controls (Lang + Dark Mode) ===== */
+        .top-controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .control-btn {
+            font-family: 'Playfair Display', serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--forest);
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1.5px solid var(--glass-border);
+            padding: 8px 16px;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all var(--transition);
+            box-shadow: var(--shadow-soft);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .control-btn:hover {
+            background: var(--forest);
+            color: var(--white);
+            border-color: var(--forest);
+            transform: translateY(-2px);
+        }
+
+        .control-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+
+        /* ===== Hero Header ===== */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            min-height: 500px;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 50vh;
+                min-height: 380px;
+            }
+        }
+
+        .hero-viewport {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-layer {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center 20%;
+            will-change: transform;
+        }
+
+        .hero-layer-warm {
+            background-image: url('https://megged.co.il/wp-content/uploads/2014/06/%D7%90%D7%A0%D7%95%D7%9B%D7%99.jpg');
+            filter: sepia(0.1) contrast(1.1) brightness(1.1);
+            z-index: 1;
+        }
+
+        .hero-layer-intellectual {
+            background-image: url('https://ebook-pro.com/wp-content/uploads/2022/11/Amittai-Megged.jpg');
+            filter: grayscale(1) contrast(1.2) brightness(0.7);
+            z-index: 2;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-size: 60px 60px;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .hero-gradient-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.15) 0%,
+                transparent 30%,
+                transparent 50%,
+                rgba(0, 0, 0, 0.4) 80%,
+                rgba(0, 0, 0, 0.7) 100%
+            );
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            padding: 0 40px 48px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-name {
+            font-family: 'Frank Ruhl Libre', 'Cormorant Garamond', serif;
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 300;
+            line-height: 1.05;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(12px, 2vw, 17px);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.85;
+            font-weight: 400;
+            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-scroll-hint {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            opacity: 0.5;
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+
+        .hero-scroll-hint svg {
+            width: 20px;
+            height: 20px;
+            stroke: #fff;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(6px); }
+        }
+
+        /* ===== Stats Bar ===== */
+        .stats-bar {
+            position: relative;
+            z-index: 10;
+            margin-top: -40px;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+
+        .stats-inner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-medium);
+            overflow: hidden;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 22px 12px;
+            text-align: center;
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--sage-light), transparent);
+        }
+
+        [dir="ltr"] .stat-item:not(:last-child)::after {
+            left: auto;
+            right: 0;
+        }
+
+        .stat-number {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: clamp(24px, 4vw, 34px);
+            font-weight: 700;
+            color: var(--forest);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        [data-theme="dark"] .stat-number {
+            color: var(--sage-light);
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        @media (max-width: 480px) {
+            .stats-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-item:nth-child(2)::after {
+                display: none;
+            }
+
+            .stat-item:nth-child(1),
+            .stat-item:nth-child(2) {
+                border-bottom: 1px solid rgba(139, 156, 111, 0.15);
+            }
+        }
+
+        /* ===== Main Content ===== */
+        main {
+            max-width: 600px;
             margin: 0 auto;
             padding: 40px 20px 60px;
             position: relative;
             z-index: 1;
         }
 
-        /* ===== HEADER / PROFILE ===== */
-        .profile {
+        /* ===== Profile Bio ===== */
+        .profile-bio {
             text-align: center;
-            margin-bottom: 36px;
-        }
-
-        .profile-image-wrapper {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        .profile-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--bg-card);
-            box-shadow: var(--shadow-md), 0 0 0 1px var(--border);
-            background: linear-gradient(135deg, var(--purple), var(--purple-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            color: white;
-            font-family: 'Secular One', sans-serif;
-        }
-
-        .profile-badge {
-            position: absolute;
-            bottom: 4px;
-            left: 4px;
-            background: var(--purple);
-            color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            border: 2px solid var(--bg);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .profile h1 {
-            font-family: 'Secular One', sans-serif;
-            font-size: 26px;
-            font-weight: 400;
-            color: var(--text);
-            margin-bottom: 2px;
-            letter-spacing: 0.5px;
-        }
-
-        .profile .subtitle-en {
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            color: var(--purple);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .profile .bio {
-            font-size: 15px;
-            color: var(--text-secondary);
-            max-width: 360px;
-            margin: 0 auto;
-            line-height: 1.7;
+            margin-bottom: 32px;
+            padding-top: 16px;
         }
 
         .credentials {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 6px;
-            margin-top: 14px;
+            gap: 8px;
+            margin-bottom: 16px;
         }
 
         .credential {
-            font-family: 'Inter', sans-serif;
             font-size: 11px;
             font-weight: 500;
-            color: var(--purple);
-            background: var(--purple-subtle);
-            padding: 4px 10px;
-            border-radius: 20px;
-            letter-spacing: 0.3px;
+            color: var(--teal);
+            background: rgba(45, 90, 90, 0.07);
+            padding: 5px 14px;
+            border-radius: 100px;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(45, 90, 90, 0.1);
+            transition: all var(--transition);
         }
 
-        /* ===== SECTION HEADERS ===== */
+        [data-theme="dark"] .credential {
+            background: rgba(45, 90, 90, 0.2);
+            border-color: rgba(61, 122, 122, 0.3);
+            color: var(--teal-light);
+        }
+
+        .bio-text {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 440px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* ===== Quote Carousel ===== */
+        .quote-carousel {
+            position: relative;
+            text-align: center;
+            padding: 32px 24px;
+            margin-bottom: 20px;
+            min-height: 100px;
+        }
+
+        .quote-slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .quote-slide.active {
+            opacity: 1;
+        }
+
+        .quote-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(17px, 2.5vw, 20px);
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 420px;
+        }
+
+        .quote-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 68px;
+        }
+
+        .quote-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--sage-light);
+            opacity: 0.3;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            padding: 0;
+        }
+
+        .quote-dot.active {
+            opacity: 1;
+            background: var(--forest);
+            transform: scale(1.3);
+        }
+
+        [data-theme="dark"] .quote-dot.active {
+            background: var(--sage-light);
+        }
+
+        /* ===== Section Header ===== */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 44px 0 20px;
+            padding: 0 4px;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--sage-light), transparent);
+        }
+
+        [data-theme="dark"] .section-line {
+            background: linear-gradient(90deg, transparent, rgba(139, 156, 111, 0.3), transparent);
+        }
+
         .section-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            font-size: 12px;
+            font-weight: 400;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 32px 0 14px;
-            padding-right: 4px;
+            letter-spacing: 3px;
+            white-space: nowrap;
         }
 
-        /* ===== LINK CARDS ===== */
+        /* ===== Link Cards (Glassmorphism) ===== */
         .links {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 14px;
         }
 
         .link-card {
             display: flex;
             align-items: center;
-            gap: 14px;
-            padding: 14px 18px;
-            background: var(--bg-card);
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border);
+            gap: 18px;
+            padding: 18px 22px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-radius: var(--radius);
+            border: 1px solid var(--glass-border);
             text-decoration: none;
             color: var(--text);
             transition: all var(--transition);
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow-glass);
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(24px);
         }
 
-        .link-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-            border-color: rgba(122, 0, 223, 0.15);
-        }
-
-        .link-card:active {
+        .link-card.visible {
+            opacity: 1;
             transform: translateY(0);
         }
 
+        .link-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(74, 93, 35, 0.04), transparent 50%, rgba(196, 160, 82, 0.03));
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .link-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-medium), 0 0 0 1px rgba(74, 93, 35, 0.1);
+            border-color: rgba(74, 93, 35, 0.2);
+        }
+
+        .link-card.visible:hover {
+            transform: translateY(-6px);
+        }
+
+        .link-card:hover::before {
+            opacity: 1;
+        }
+
+        .link-card:active {
+            transform: translateY(-3px);
+        }
+
+        .link-card.visible:active {
+            transform: translateY(-3px);
+        }
+
         .link-card .icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 24px;
             flex-shrink: 0;
-            background: var(--purple-subtle);
+            background: linear-gradient(135deg, rgba(74, 93, 35, 0.06), rgba(139, 156, 111, 0.1));
+            position: relative;
+            z-index: 1;
+            transition: all var(--transition);
+        }
+
+        [data-theme="dark"] .link-card .icon {
+            background: linear-gradient(135deg, rgba(74, 93, 35, 0.15), rgba(139, 156, 111, 0.2));
+        }
+
+        .link-card:hover .icon {
+            transform: scale(1.05);
         }
 
         .link-card .link-content {
             flex: 1;
             min-width: 0;
+            position: relative;
+            z-index: 1;
         }
 
         .link-card .link-title {
-            font-family: 'Secular One', sans-serif;
-            font-size: 15px;
-            font-weight: 400;
-            color: var(--text);
-            margin-bottom: 1px;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--charcoal);
+            margin-bottom: 2px;
+            transition: color var(--transition);
         }
 
         .link-card .link-desc {
             font-size: 13px;
             color: var(--text-muted);
+            font-weight: 300;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
         .link-card .arrow {
-            color: var(--text-muted);
-            font-size: 16px;
+            color: var(--sage);
+            font-size: 18px;
             transition: all var(--transition);
             flex-shrink: 0;
+            position: relative;
+            z-index: 1;
         }
 
         .link-card:hover .arrow {
-            color: var(--purple);
-            transform: translateX(-4px);
+            color: var(--forest);
+            transform: translateX(-6px);
         }
 
-        /* Featured card */
+        [dir="ltr"] .link-card:hover .arrow {
+            transform: translateX(6px);
+        }
+
+        /* Featured Card */
         .link-card.featured {
-            background: linear-gradient(135deg, var(--purple), var(--purple-light));
+            background: linear-gradient(135deg, var(--forest) 0%, var(--forest-dark) 50%, var(--teal) 100%);
             border: none;
             color: white;
+            padding: 22px 26px;
         }
 
         .link-card.featured .icon {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .link-card.featured .link-title {
             color: white;
+            font-size: 17px;
         }
 
         .link-card.featured .link-desc {
@@ -280,104 +783,157 @@
         }
 
         .link-card.featured:hover {
-            box-shadow: var(--shadow-purple);
+            box-shadow: 0 12px 50px rgba(74, 93, 35, 0.35), 0 0 80px rgba(74, 93, 35, 0.15);
         }
 
         .link-card.featured:hover .arrow {
             color: white;
         }
 
-        /* Gold accent card */
-        .link-card.gold .icon {
-            background: rgba(201, 168, 76, 0.12);
+        .link-card.featured::before {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
         }
 
-        /* ===== BOOKS GRID ===== */
+        /* Gold Accent Card */
+        .link-card.gold .icon {
+            background: linear-gradient(135deg, rgba(196, 160, 82, 0.1), rgba(212, 184, 114, 0.15));
+        }
+
+        .link-card.gold:hover {
+            border-color: rgba(196, 160, 82, 0.25);
+        }
+
+        /* ===== Books Grid ===== */
         .books-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 14px;
         }
 
         .book-card {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px 14px 16px;
-            background: var(--bg-card);
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border);
+            padding: 28px 16px 22px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-radius: var(--radius);
+            border: 1px solid var(--glass-border);
             text-decoration: none;
             color: var(--text);
             transition: all var(--transition);
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow-glass);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(24px);
+        }
+
+        .book-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .book-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--forest), var(--gold), var(--sage));
+            transform: scaleX(0);
+            transition: transform var(--transition);
         }
 
         .book-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-            border-color: rgba(122, 0, 223, 0.15);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .book-card.visible:hover {
+            transform: translateY(-6px);
+        }
+
+        .book-card:hover::after {
+            transform: scaleX(1);
         }
 
         .book-card .book-icon {
-            font-size: 36px;
-            margin-bottom: 10px;
+            font-size: 40px;
+            margin-bottom: 14px;
+            filter: saturate(0.8);
+            color: var(--forest);
+        }
+
+        [data-theme="dark"] .book-card .book-icon {
+            color: var(--sage-light);
         }
 
         .book-card .book-title {
-            font-family: 'Secular One', sans-serif;
-            font-size: 13px;
-            font-weight: 400;
+            font-size: 14px;
+            font-weight: 500;
             line-height: 1.5;
-            color: var(--text);
+            color: var(--charcoal);
         }
 
         .book-card .book-lang {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Playfair Display', serif;
             font-size: 10px;
-            color: var(--text-muted);
-            margin-top: 4px;
+            color: var(--sage);
+            margin-top: 6px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            font-style: italic;
         }
 
-        /* ===== CONTACT BAR ===== */
+        @media (max-width: 420px) {
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== Contact Bar ===== */
         .contact-bar {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 36px;
+            gap: 16px;
+            margin-top: 48px;
         }
 
         .contact-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 48px;
-            height: 48px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1.5px solid var(--glass-border);
             text-decoration: none;
-            font-size: 22px;
+            font-size: 24px;
             transition: all var(--transition);
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow-glass);
         }
 
         .contact-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-4px) scale(1.08);
+            box-shadow: var(--shadow-medium);
         }
 
         .contact-btn.whatsapp:hover {
             background: #25D366;
             border-color: #25D366;
+            color: white;
         }
 
         .contact-btn.email:hover {
-            background: var(--purple);
-            border-color: var(--purple);
+            background: var(--forest);
+            border-color: var(--forest);
         }
 
         .contact-btn.phone:hover {
@@ -385,363 +941,2179 @@
             border-color: var(--gold);
         }
 
-        /* ===== FOOTER ===== */
-        .footer {
+        /* ===== Footer ===== */
+        footer {
             text-align: center;
-            margin-top: 40px;
-            padding-top: 24px;
-            border-top: 1px solid var(--border);
+            margin-top: 56px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(74, 93, 35, 0.1);
         }
 
-        .footer p {
-            font-family: 'Inter', sans-serif;
+        [data-theme="dark"] footer {
+            border-top-color: rgba(74, 93, 35, 0.2);
+        }
+
+        footer .copyright {
             font-size: 12px;
             color: var(--text-muted);
-            letter-spacing: 0.3px;
+            letter-spacing: 0.5px;
         }
 
-        .footer .quote {
-            font-family: 'Frank Ruhl Libre', serif;
-            font-size: 14px;
-            font-style: italic;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-            line-height: 1.7;
+        footer .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            font-size: 11px;
+            color: var(--sage);
+            text-decoration: none;
+            transition: color var(--transition);
         }
 
-        /* ===== LANGUAGE TOGGLE ===== */
-        .lang-toggle {
+        footer .brand:hover {
+            color: var(--forest);
+        }
+
+        /* ===== Back to Top ===== */
+        .back-to-top {
             position: fixed;
-            top: 16px;
-            left: 16px;
-            z-index: 100;
-        }
-
-        .lang-btn {
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--text-muted);
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 6px 12px;
-            border-radius: 20px;
+            bottom: 28px;
+            right: 28px;
+            z-index: 900;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            transition: all var(--transition);
-            box-shadow: var(--shadow-sm);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
         }
 
-        .lang-btn:hover {
-            color: var(--purple);
-            border-color: rgba(122, 0, 223, 0.2);
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
         }
 
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(16px);
+        .back-to-top:hover {
+            background: var(--forest);
+            border-color: var(--forest);
+            transform: translateY(-3px);
+        }
+
+        .back-to-top:hover svg {
+            stroke: #fff;
+        }
+
+        .back-to-top svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--forest);
+            fill: none;
+            stroke-width: 2;
+            transition: stroke 0.3s ease;
+        }
+
+        /* ===== English overrides ===== */
+        [lang="en"] body {
+            font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+        }
+
+        [lang="en"] .link-card .link-title,
+        [lang="en"] .book-card .book-title,
+        [lang="en"] .credential,
+        [lang="en"] .bio-text {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        [lang="en"] .hero-name {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 420px) {
+            main {
+                padding: 32px 16px 48px;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+            .link-card {
+                padding: 16px 18px;
             }
-        }
 
-        .profile {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        .link-card, .book-card {
-            animation: fadeInUp 0.5s ease-out both;
-        }
-
-        .links .link-card:nth-child(1) { animation-delay: 0.1s; }
-        .links .link-card:nth-child(2) { animation-delay: 0.15s; }
-        .links .link-card:nth-child(3) { animation-delay: 0.2s; }
-        .links .link-card:nth-child(4) { animation-delay: 0.25s; }
-        .links .link-card:nth-child(5) { animation-delay: 0.3s; }
-
-        .books-grid .book-card:nth-child(1) { animation-delay: 0.35s; }
-        .books-grid .book-card:nth-child(2) { animation-delay: 0.4s; }
-        .books-grid .book-card:nth-child(3) { animation-delay: 0.45s; }
-        .books-grid .book-card:nth-child(4) { animation-delay: 0.5s; }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 360px) {
-            .container {
-                padding: 30px 16px 50px;
-            }
-            .profile h1 {
+            .link-card .icon {
+                width: 46px;
+                height: 46px;
                 font-size: 22px;
             }
-            .books-grid {
-                grid-template-columns: 1fr;
+
+            .top-controls {
+                top: 14px;
+                left: 14px;
+            }
+
+            .control-btn {
+                font-size: 12px;
+                padding: 6px 12px;
             }
         }
 
-        /* ===== ENGLISH VERSION ===== */
-        [lang="en"] {
-            direction: ltr;
+        /* ===== Reduced Motion ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .particle {
+                display: none;
+            }
         }
 
-        [lang="en"] .link-card:hover .arrow {
-            transform: translateX(4px);
+        /* ===== Funnel: Newsletter Modal ===== */
+        .funnel-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 5000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            padding: 20px;
+        }
+
+        .funnel-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .funnel-modal {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-medium);
+            max-width: 420px;
+            width: 100%;
+            padding: 36px 32px;
+            position: relative;
+            transform: translateY(20px) scale(0.97);
+            transition: transform 0.4s ease;
+        }
+
+        .funnel-overlay.active .funnel-modal {
+            transform: translateY(0) scale(1);
+        }
+
+        .funnel-close {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        [dir="ltr"] .funnel-close {
+            left: auto;
+            right: 14px;
+        }
+
+        .funnel-close:hover {
+            background: rgba(0, 0, 0, 0.06);
+            color: var(--text);
+        }
+
+        [data-theme="dark"] .funnel-close:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .funnel-modal h3 {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .funnel-modal .funnel-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .funnel-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .funnel-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--sand);
+            border-radius: 12px;
+            background: var(--white);
+            color: var(--text);
+            font-family: 'Heebo', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            outline: none;
+        }
+
+        .funnel-input:focus {
+            border-color: var(--forest);
+        }
+
+        [data-theme="dark"] .funnel-input {
+            background: rgba(30, 38, 32, 0.6);
+            border-color: rgba(74, 93, 35, 0.3);
+        }
+
+        .funnel-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--sand);
+            border-radius: 12px;
+            background: var(--white);
+            color: var(--text);
+            font-family: 'Heebo', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            outline: none;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237A7A7A' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: left 14px center;
+            padding-left: 36px;
+        }
+
+        [dir="ltr"] .funnel-select {
+            background-position: right 14px center;
+            padding-left: 16px;
+            padding-right: 36px;
+        }
+
+        [data-theme="dark"] .funnel-select {
+            background: rgba(30, 38, 32, 0.6);
+            border-color: rgba(74, 93, 35, 0.3);
+        }
+
+        .funnel-submit {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--forest), var(--teal));
+            color: #fff;
+            font-family: 'Heebo', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 4px;
+        }
+
+        .funnel-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(74, 93, 35, 0.3);
+        }
+
+        .funnel-privacy {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 4px;
+        }
+
+        .funnel-success {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .funnel-success .check-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--forest), var(--teal));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 28px;
+            color: #fff;
+        }
+
+        .funnel-success h3 {
+            margin-bottom: 8px;
+        }
+
+        .funnel-success p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* ===== Funnel: Exit Intent Popup ===== */
+        .exit-modal .funnel-modal {
+            text-align: center;
+        }
+
+        .exit-modal .exit-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .exit-modal h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .exit-modal .exit-offer {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .exit-modal .exit-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .exit-modal .exit-form .funnel-input {
+            flex: 1;
+        }
+
+        .exit-modal .exit-form .funnel-submit {
+            width: auto;
+            padding: 12px 24px;
+            white-space: nowrap;
+            margin-top: 0;
+        }
+
+        @media (max-width: 420px) {
+            .exit-modal .exit-form {
+                flex-direction: column;
+            }
+            .exit-modal .exit-form .funnel-submit {
+                width: 100%;
+            }
+        }
+
+        /* ===== Funnel: Floating WhatsApp Button ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            left: 28px;
+            z-index: 900;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            text-decoration: none;
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.8);
+            transition: all 0.4s ease;
+        }
+
+        [dir="ltr"] .whatsapp-float {
+            left: auto;
+            right: 28px;
+        }
+
+        .whatsapp-float.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: #fff;
+        }
+
+        .whatsapp-float::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(37, 211, 102, 0.4);
+            animation: waPulse 2s ease-out infinite;
+        }
+
+        @keyframes waPulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .whatsapp-float .wa-tooltip {
+            position: absolute;
+            right: calc(100% + 12px);
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--charcoal);
+            color: #fff;
+            font-size: 12px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        [dir="ltr"] .whatsapp-float .wa-tooltip {
+            right: auto;
+            left: calc(100% + 12px);
+        }
+
+        .whatsapp-float:hover .wa-tooltip {
+            opacity: 1;
+        }
+
+        /* ===== Funnel: Sticky CTA Bar ===== */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 800;
+            height: 60px;
+            background: linear-gradient(135deg, var(--forest), var(--teal));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 0 20px;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .sticky-cta.visible {
+            transform: translateY(0);
+        }
+
+        .sticky-cta.hidden {
+            transform: translateY(100%);
+        }
+
+        .sticky-cta-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        .sticky-cta-btn {
+            padding: 8px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 100px;
+            background: transparent;
+            color: #fff;
+            font-family: 'Heebo', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .sticky-cta-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #fff;
+        }
+
+        .sticky-cta-close {
+            position: absolute;
+            top: 50%;
+            left: 16px;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 18px;
+            cursor: pointer;
+            padding: 4px;
+            transition: color 0.3s ease;
+        }
+
+        [dir="ltr"] .sticky-cta-close {
+            left: auto;
+            right: 16px;
+        }
+
+        .sticky-cta-close:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 480px) {
+            .sticky-cta-text {
+                font-size: 13px;
+            }
+            .sticky-cta-btn {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+        }
+
+        /* ===== Funnel: Time Greeting ===== */
+        .time-greeting {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: greetFadeIn 0.8s ease 0.5s forwards;
+        }
+
+        @keyframes greetFadeIn {
+            to { opacity: 1; }
+        }
+
+        /* ===== Funnel: Returning Visitor Banner ===== */
+        .returning-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 4000;
+            text-align: center;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--forest), var(--teal));
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+            transform: translateY(-100%);
+            animation: bannerSlide 0.5s ease 0.3s forwards, bannerFade 0.5s ease 4.3s forwards;
+        }
+
+        @keyframes bannerSlide {
+            to { transform: translateY(0); }
+        }
+
+        @keyframes bannerFade {
+            to { transform: translateY(-100%); opacity: 0; }
+        }
+
+        /* ===== Funnel: Cookie Consent ===== */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 3500;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-top: 1px solid var(--glass-border);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .cookie-consent.visible {
+            transform: translateY(0);
+        }
+
+        .cookie-consent-btn {
+            padding: 6px 18px;
+            border: 1.5px solid var(--forest);
+            border-radius: 100px;
+            background: var(--forest);
+            color: #fff;
+            font-family: 'Heebo', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .cookie-consent-btn:hover {
+            background: var(--forest-dark);
+        }
+
+        /* Adjust cookie bar position when sticky CTA is visible */
+        .cookie-consent.with-cta {
+            bottom: 60px;
+        }
+
+        @media (max-width: 480px) {
+            .cookie-consent {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+        }
+
+        /* Adjust back-to-top and whatsapp-float when sticky CTA visible */
+        body.has-sticky-cta .back-to-top {
+            bottom: 88px;
+        }
+        body.has-sticky-cta .whatsapp-float {
+            bottom: 88px;
+        }
+
+        /* ===== Funnel: Testimonials Section ===== */
+        .testimonials-carousel {
+            position: relative;
+            min-height: 160px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 20px;
+        }
+
+        .testimonial-slide.active {
+            opacity: 1;
+        }
+
+        .testimonial-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: var(--shadow-glass);
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+
+        .testimonial-author {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--forest);
+        }
+
+        [data-theme="dark"] .testimonial-author {
+            color: var(--sage-light);
+        }
+
+        .testimonial-role {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .testimonial-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--sage-light);
+            opacity: 0.3;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            padding: 0;
+        }
+
+        .testimonial-dot.active {
+            opacity: 1;
+            background: var(--forest);
+            transform: scale(1.3);
+        }
+
+        [data-theme="dark"] .testimonial-dot.active {
+            background: var(--sage-light);
         }
     </style>
 </head>
-<body>
 
-    <!-- Language Toggle -->
-    <div class="lang-toggle">
-        <button class="lang-btn" onclick="toggleLang()" id="langBtn">EN</button>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-ring"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Floating Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
     </div>
 
-    <div class="container">
+    <!-- Grain Texture -->
+    <div class="grain"></div>
 
-        <!-- ===== PROFILE ===== -->
-        <header class="profile">
-            <div class="profile-image-wrapper">
-                <div class="profile-image" id="profileAvatar">
-                    א.מ
-                </div>
-                <div class="profile-badge">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                </div>
+    <!-- Top Controls -->
+    <div class="top-controls">
+        <button class="control-btn" onclick="toggleLang()" id="langBtn" aria-label="Switch language">EN</button>
+        <button class="control-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Toggle dark mode">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" id="themeIcon">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Hero Header -->
+    <header class="hero" id="heroSection">
+        <div class="hero-viewport">
+            <div class="hero-layer hero-layer-warm"></div>
+            <div class="hero-layer hero-layer-intellectual" id="heroRevealLayer"></div>
+            <div class="hero-grid"></div>
+            <div class="hero-gradient-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-name" id="heroName">אמיתי מגד</h1>
+            <p class="hero-subtitle" id="heroSubtitle">Worthiness Based Psychotherapy</p>
+        </div>
+        <div class="hero-scroll-hint" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"/>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <nav class="stats-bar" aria-label="Statistics">
+        <div class="stats-inner">
+            <div class="stat-item">
+                <span class="stat-number" data-count="5">0</span>
+                <span class="stat-label" data-he="ספרים" data-en="Books" id="statBooks">ספרים</span>
             </div>
-            <h1 id="profileName">אמיתי מגד</h1>
-            <div class="subtitle-en" id="profileSubtitle">Worthiness Based Psychotherapy</div>
-            <p class="bio" id="profileBio">מטפל זוגי ומשפחתי, מחבר, מרצה ומדריך. ראש תכנית ההכשרה לטיפול זוגי ומשפחתי במכללת תל-חי.</p>
+            <div class="stat-item">
+                <span class="stat-number" data-count="30" data-suffix="+">0</span>
+                <span class="stat-label" data-he="שנות ניסיון" data-en="Years Experience" id="statYears">שנות ניסיון</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-count="1000" data-suffix="+" data-format="comma">0</span>
+                <span class="stat-label" data-he="בוגרים" data-en="Graduates" id="statGrads">בוגרים</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-count="4">0</span>
+                <span class="stat-label" data-he="אתרים" data-en="Websites" id="statSites">אתרים</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Time Greeting -->
+        <div class="time-greeting" id="timeGreeting"></div>
+
+        <!-- Profile Bio -->
+        <section class="profile-bio">
             <div class="credentials">
                 <span class="credential">MFT</span>
                 <span class="credential">MSW</span>
-                <span class="credential" id="credBooks">5 ספרים</span>
-                <span class="credential" id="credExp">30+ שנות ניסיון</span>
+                <span class="credential" id="credBooks" data-he="5 ספרים" data-en="5 Books">5 ספרים</span>
+                <span class="credential" id="credExp" data-he="30+ שנות ניסיון" data-en="30+ Years">30+ שנות ניסיון</span>
             </div>
-        </header>
+            <p class="bio-text" id="profileBio">מטפל זוגי ומשפחתי, מחבר, מרצה ומדריך. ראש תכנית ההכשרה לטיפול זוגי ומשפחתי במכללת תל-חי.</p>
+        </section>
 
-        <!-- ===== WORKSHOPS & PROGRAMS ===== -->
-        <div class="section-label" id="labelPrograms">סדנאות ותכניות</div>
-        <div class="links" id="linksPrograms">
-            <a href="https://www.being-worthy.co.il/" target="_blank" rel="noopener" class="link-card featured">
-                <div class="icon">&#128149;</div>
-                <div class="link-content">
-                    <div class="link-title" data-he="להיות זוג ראוי" data-en="Being a Worthy Couple">להיות זוג ראוי</div>
-                    <div class="link-desc" data-he="סדנה לזוגות - כלים לקשר עמוק ואותנטי" data-en="Workshop for couples - tools for deep authentic connection">סדנה לזוגות - כלים לקשר עמוק ואותנטי</div>
+        <!-- Quote Carousel -->
+        <section class="quote-carousel" aria-label="Quotes">
+            <div class="quote-slide active" data-quote="0">
+                <p class="quote-text" data-he="״ראויות אינה משהו שמגיע לנו — היא משהו שאנחנו מרוויחים דרך המעשים שלנו״" data-en="&ldquo;Worthiness is not something we are entitled to &mdash; it is something we earn through our actions.&rdquo;">״ראויות אינה משהו שמגיע לנו — היא משהו שאנחנו מרוויחים דרך המעשים שלנו״</p>
+            </div>
+            <div class="quote-slide" data-quote="1">
+                <p class="quote-text" data-he="״מובחנות היא היכולת לשמור על תחושת עצמי יציבה גם כשהזוגיות מערערת אותנו״" data-en="&ldquo;Differentiation is the ability to maintain a stable sense of self even when our relationship challenges us.&rdquo;">״מובחנות היא היכולת לשמור על תחושת עצמי יציבה גם כשהזוגיות מערערת אותנו״</p>
+            </div>
+            <div class="quote-slide" data-quote="2">
+                <p class="quote-text" data-he="״הטיפול הזוגי מתחיל ברגע שאנחנו מפסיקים להאשים ומתחילים להתבונן פנימה״" data-en="&ldquo;Couples therapy begins the moment we stop blaming and start looking inward.&rdquo;">״הטיפול הזוגי מתחיל ברגע שאנחנו מפסיקים להאשים ומתחילים להתבונן פנימה״</p>
+            </div>
+            <div class="quote-dots" role="tablist">
+                <button class="quote-dot active" data-index="0" role="tab" aria-selected="true" aria-label="Quote 1"></button>
+                <button class="quote-dot" data-index="1" role="tab" aria-selected="false" aria-label="Quote 2"></button>
+                <button class="quote-dot" data-index="2" role="tab" aria-selected="false" aria-label="Quote 3"></button>
+            </div>
+        </section>
+
+        <!-- Podcasts -->
+        <div class="section-header" data-animate>
+            <span class="section-line"></span>
+            <span class="section-label" id="labelPodcasts" data-he="פודקאסטים - פרקים נבחרים" data-en="Podcasts - Selected Episodes">פודקאסטים - פרקים נבחרים</span>
+            <span class="section-line"></span>
+        </div>
+        <div class="links">
+            <a href="https://open.spotify.com/episode/5S3X6c9o4f0v6YJ6Uf9qG7" target="_blank" rel="noopener" class="link-card gold" data-animate>
+                <div class="icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" x2="12" y1="19" y2="22"/>
+                    </svg>
                 </div>
-                <span class="arrow">&larr;</span>
+                <div class="link-content">
+                    <div class="link-title" data-he="מובחנות וביטחון עצמי בזוגיות" data-en="Differentiation & Self-Confidence">מובחנות וביטחון עצמי בזוגיות</div>
+                    <div class="link-desc" data-he="שיחה חגיגית בפודקאסט 'מסע אל הנפש' - ספוטיפיי" data-en="Special episode on 'Journey to the Soul' - Spotify">שיחה חגיגית בפודקאסט 'מסע אל הנפש' - ספוטיפיי</div>
+                </div>
+                <span class="arrow">&#8592;</span>
             </a>
-            <a href="https://www.being-worthy.co.il/" target="_blank" rel="noopener" class="link-card">
-                <div class="icon">&#128131;</div>
-                <div class="link-content">
-                    <div class="link-title" data-he="להיות ראויה" data-en="Being a Worthy Woman">להיות ראויה</div>
-                    <div class="link-desc" data-he="סדנה לנשים - העצמה ואותנטיות" data-en="Workshop for women - empowerment and authenticity">סדנה לנשים - העצמה ואותנטיות</div>
+            <a href="https://podcasts.apple.com/il/podcast/%D7%9C%D7%94%D7%99%D7%95%D7%AA-%D7%A8%D7%90%D7%95%D7%99-%D7%A2%D7%9C-%D7%AA%D7%A4%D7%99%D7%A1%D7%AA-%D7%94%D7%A8%D7%90%D7%95%D7%99%D7%95%D7%AA-%D7%A2%D7%9D-%D7%90%D7%9E%D7%99%D7%AA%D7%99-%D7%9D%D7%92%D7%93/id1524317424?i=1000632545593" target="_blank" rel="noopener" class="link-card" data-animate>
+                <div class="icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 18V5l12-2v13"/>
+                        <circle cx="6" cy="18" r="3"/>
+                        <circle cx="18" cy="16" r="3"/>
+                    </svg>
                 </div>
-                <span class="arrow">&larr;</span>
-            </a>
-            <a href="https://worthinesspsychotherapy.com/" target="_blank" rel="noopener" class="link-card">
-                <div class="icon">&#127757;</div>
                 <div class="link-content">
-                    <div class="link-title" data-he="אינטנסיביים בינלאומיים" data-en="International Intensives">אינטנסיביים בינלאומיים</div>
-                    <div class="link-desc" data-he="קופנהגן ואירופה - באנגלית" data-en="Copenhagen & Europe - in English">קופנהגן ואירופה - באנגלית</div>
+                    <div class="link-title" data-he="להיות ראוי - על תפיסת הראויות" data-en="Being Worthy - On Worthiness">להיות ראוי - על תפיסת הראויות</div>
+                    <div class="link-desc" data-he="שיחות גוף נפש עם מושיק ליכטנשטיין" data-en="Body Mind Conversations with Moshik Lichtenstein">שיחות גוף נפש עם מושיק ליכטנשטיין</div>
                 </div>
-                <span class="arrow">&larr;</span>
+                <span class="arrow">&#8592;</span>
             </a>
         </div>
 
-        <!-- ===== PROFESSIONAL TRAINING ===== -->
-        <div class="section-label" id="labelTraining">הכשרות לאנשי מקצוע</div>
-        <div class="links" id="linksTraining">
-            <a href="https://megged.co.il/" target="_blank" rel="noopener" class="link-card">
-                <div class="icon">&#127891;</div>
+        <!-- Videos -->
+        <div class="section-header" data-animate>
+            <span class="section-line"></span>
+            <span class="section-label" id="labelVideos" data-he="הרצאות וסרטונים" data-en="Videos & Lectures">הרצאות וסרטונים</span>
+            <span class="section-line"></span>
+        </div>
+        <div class="links">
+            <a href="https://www.youtube.com/watch?v=F0v4LzN9r-w" target="_blank" rel="noopener" class="link-card featured" data-animate>
+                <div class="icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                </div>
+                <div class="link-content">
+                    <div class="link-title" data-he="ערך עצמי: איך להרגיש ראויים?" data-en="Self-Worth: How to Feel Worthy?">ערך עצמי: איך להרגיש ראויים?</div>
+                    <div class="link-desc" data-he="הרצאה מרכזית בערוץ היוטיוב הרשמי" data-en="Key lecture on the official YouTube channel">הרצאה מרכזית בערוץ היוטיוב הרשמי</div>
+                </div>
+                <span class="arrow">&#8592;</span>
+            </a>
+            <a href="https://www.youtube.com/watch?v=q6bQ0T_B0X8" target="_blank" rel="noopener" class="link-card" data-animate>
+                <div class="icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                    </svg>
+                </div>
+                <div class="link-content">
+                    <div class="link-title" data-he="משיכה ותחושת עצמי המשוקפת" data-en="Attraction & Reflected Sense of Self">משיכה ותחושת עצמי המשוקפת</div>
+                    <div class="link-desc" data-he="על הקשר בין משיכה לביטחון עצמי" data-en="On the connection between attraction and self-confidence">על הקשר בין משיכה לביטחון עצמי</div>
+                </div>
+                <span class="arrow">&#8592;</span>
+            </a>
+        </div>
+
+        <!-- Articles -->
+        <div class="section-header" data-animate>
+            <span class="section-line"></span>
+            <span class="section-label" id="labelArticles" data-he="מאמרים ותובנות" data-en="Articles & Insights">מאמרים ותובנות</span>
+            <span class="section-line"></span>
+        </div>
+        <div class="links">
+            <a href="https://megged.co.il/blog/%d7%a2%d7%9c-%d7%90%d7%a9%d7%9e%d7%94-%d7%91%d7%99%d7%97%d7%a1%d7%99%d7%9d-%d7%96%d7%95%d7%92%d7%99%d7%99%d7%9d/" target="_blank" rel="noopener" class="link-card" data-animate>
+                <div class="icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                        <path d="M8 7h6"/>
+                        <path d="M8 11h8"/>
+                    </svg>
+                </div>
+                <div class="link-content">
+                    <div class="link-title" data-he="על אשמה ביחסים זוגיים" data-en="On Guilt in Relationships">על אשמה ביחסים זוגיים</div>
+                    <div class="link-desc" data-he="מאמר מרכזי מתוך הבלוג המקצועי" data-en="Key article from the professional blog">מאמר מרכזי מתוך הבלוג המקצועי</div>
+                </div>
+                <span class="arrow">&#8592;</span>
+            </a>
+            <a href="https://megged.co.il/category/%d7%a2%d7%95%d7%9c%d7%9d-%d7%94%d7%aa%d7%95%d7%9b%d7%9f/%d7%9e%d7%90%d7%9e%d7%a1%d7%99%d7%9d/" target="_blank" rel="noopener" class="link-card" data-animate>
+                <div class="icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                    </svg>
+                </div>
+                <div class="link-content">
+                    <div class="link-title" data-he="כל המאמרים" data-en="All Articles">כל המאמרים</div>
+                    <div class="link-desc" data-he="ארכיון המאמרים המלא בנושאי טיפול וזוגיות" data-en="Full archive of articles on therapy and relationships">ארכיון המאמרים המלא בנושאי טיפול וזוגיות</div>
+                </div>
+                <span class="arrow">&#8592;</span>
+            </a>
+        </div>
+
+        <!-- Workshops & Programs -->
+        <div class="section-header" data-animate>
+            <span class="section-line"></span>
+            <span class="section-label" id="labelPrograms" data-he="סדנאות ותכניות" data-en="Workshops & Programs">סדנאות ותכניות</span>
+            <span class="section-line"></span>
+        </div>
+        <div class="links">
+            <a href="https://www.being-worthy.co.il/" target="_blank" rel="noopener" class="link-card featured" data-animate>
+                <div class="icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                    </svg>
+                </div>
+                <div class="link-content">
+                    <div class="link-title" data-he="להיות זוג ראוי" data-en="Being a Worthy Couple">להיות זוג ראוי</div>
+                    <div class="link-desc" data-he="סדנה לזוגות — כלים לקשר עמוק ואותנטי" data-en="Couples workshop — tools for deep authentic connection">סדנה לזוגות — כלים לקשר עמוק ואותנטי</div>
+                </div>
+                <span class="arrow">&#8592;</span>
+            </a>
+            <a href="https://www.being-worthy.co.il/" target="_blank" rel="noopener" class="link-card" data-animate>
+                <div class="icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <div class="link-content">
+                    <div class="link-title" data-he="להיות ראויה" data-en="Being a Worthy Woman">להיות ראויה</div>
+                    <div class="link-desc" data-he="סדנה לנשים — העצמה ואותנטיות" data-en="Women's workshop — empowerment and authenticity">סדנה לנשים — העצמה ואותנטיות</div>
+                </div>
+                <span class="arrow">&#8592;</span>
+            </a>
+            <a href="https://worthinesspsychotherapy.com/" target="_blank" rel="noopener" class="link-card" data-animate>
+                <div class="icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                </div>
+                <div class="link-content">
+                    <div class="link-title" data-he="אינטנסיביים בינלאומיים" data-en="International Intensives">אינטנסיביים בינלאומיים</div>
+                    <div class="link-desc" data-he="קופנהגן ואירופה — באנגלית" data-en="Copenhagen & Europe — in English">קופנהגן ואירופה — באנגלית</div>
+                </div>
+                <span class="arrow">&#8592;</span>
+            </a>
+        </div>
+
+        <!-- Professional Training -->
+        <div class="section-header" data-animate>
+            <span class="section-line"></span>
+            <span class="section-label" id="labelTraining" data-he="הכשרות לאנשי מקצוע" data-en="Professional Training">הכשרות לאנשי מקצוע</span>
+            <span class="section-line"></span>
+        </div>
+        <div class="links">
+            <a href="https://megged.co.il/megged-school/" target="_blank" rel="noopener" class="link-card" data-animate>
+                <div class="icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                    </svg>
+                </div>
                 <div class="link-content">
                     <div class="link-title" data-he="תכנית תלת-שנתית" data-en="3-Year Training Program">תכנית תלת-שנתית</div>
                     <div class="link-desc" data-he="הכשרה מקיפה בטיפול זוגי מבוסס מובחנות" data-en="Comprehensive differentiation-based couples therapy training">הכשרה מקיפה בטיפול זוגי מבוסס מובחנות</div>
                 </div>
-                <span class="arrow">&larr;</span>
+                <span class="arrow">&#8592;</span>
             </a>
-            <a href="https://megged.co.il/" target="_blank" rel="noopener" class="link-card">
-                <div class="icon">&#128187;</div>
+            <a href="https://megged.co.il/%d7%a7%d7%95%d7%a8%d7%a1-%d7%90%d7%99%d7%a0%d7%98%d7%a8%d7%a0%d7%98%d7%99/" target="_blank" rel="noopener" class="link-card" data-animate>
+                <div class="icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                </div>
                 <div class="link-content">
                     <div class="link-title" data-he="קורסים אונליין" data-en="Online Courses">קורסים אונליין</div>
-                    <div class="link-desc" data-he="קורסים מקצועיים בזום - לאנשי טיפול" data-en="Professional Zoom courses - for therapists">קורסים מקצועיים בזום - לאנשי טיפול</div>
+                    <div class="link-desc" data-he="קורסים מקצועיים בזום — לאנשי טיפול" data-en="Professional Zoom courses — for therapists">קורסים מקצועיים בזום — לאנשי טיפול</div>
                 </div>
-                <span class="arrow">&larr;</span>
+                <span class="arrow">&#8592;</span>
             </a>
         </div>
 
-        <!-- ===== BOOKS ===== -->
-        <div class="section-label" id="labelBooks">ספרים</div>
+        <!-- Books -->
+        <div class="section-header" data-animate>
+            <span class="section-line"></span>
+            <span class="section-label" id="labelBooks" data-he="ספרים" data-en="Books">ספרים</span>
+            <span class="section-line"></span>
+        </div>
         <div class="books-grid">
-            <a href="https://www.amazon.com/s?k=amitai+megged" target="_blank" rel="noopener" class="book-card">
-                <div class="book-icon">&#128214;</div>
+            <a href="https://www.amazon.com/s?k=amitai+megged" target="_blank" rel="noopener" class="book-card" data-animate>
+                <div class="book-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    </svg>
+                </div>
                 <div class="book-title" data-he="טיפול זוגי מבוסס מובחנות" data-en="Differentiation Based Couple Therapy">טיפול זוגי מבוסס מובחנות</div>
-                <div class="book-lang">HE</div>
+                <div class="book-lang">Hebrew</div>
             </a>
-            <a href="https://www.amazon.com/s?k=earning+worthiness+megged" target="_blank" rel="noopener" class="book-card">
-                <div class="book-icon">&#128218;</div>
+            <a href="https://www.amazon.com/s?k=earning+worthiness+megged" target="_blank" rel="noopener" class="book-card" data-animate>
+                <div class="book-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 7V3h8v18h-8v-4H4V7h8zM4 11h8M4 15h8"/>
+                    </svg>
+                </div>
                 <div class="book-title" data-he="להיות ראוי" data-en="Earning Worthiness">להיות ראוי</div>
                 <div class="book-lang">HE / EN</div>
             </a>
-            <a href="https://www.being-worthy.co.il/" target="_blank" rel="noopener" class="book-card">
-                <div class="book-icon">&#128155;</div>
+            <a href="https://www.being-worthy.co.il/" target="_blank" rel="noopener" class="book-card" data-animate>
+                <div class="book-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </div>
                 <div class="book-title" data-he="להיות זוג ראוי" data-en="Being a Worthy Couple">להיות זוג ראוי</div>
-                <div class="book-lang">HE</div>
+                <div class="book-lang">Hebrew</div>
             </a>
-            <a href="https://megged.co.il/" target="_blank" rel="noopener" class="book-card">
-                <div class="book-icon">&#128216;</div>
+            <a href="https://megged.co.il/" target="_blank" rel="noopener" class="book-card" data-animate>
+                <div class="book-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="16"/>
+                        <line x1="8" y1="12" x2="16" y2="12"/>
+                    </svg>
+                </div>
                 <div class="book-title" data-he="ספרים נוספים" data-en="More Books">ספרים נוספים</div>
                 <div class="book-lang" data-he="באתר הראשי" data-en="On main site">באתר הראשי</div>
             </a>
         </div>
 
-        <!-- ===== WEBSITES ===== -->
-        <div class="section-label" id="labelSites">אתרים</div>
-        <div class="links" id="linksSites">
-            <a href="https://megged.co.il/" target="_blank" rel="noopener" class="link-card">
-                <div class="icon">&#127968;</div>
+        <!-- Websites -->
+        <div class="section-header" data-animate>
+            <span class="section-line"></span>
+            <span class="section-label" id="labelSites" data-he="אתרים" data-en="Websites">אתרים</span>
+            <span class="section-line"></span>
+        </div>
+        <div class="links">
+            <a href="https://megged.co.il/" target="_blank" rel="noopener" class="link-card" data-animate>
+                <div class="icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                </div>
                 <div class="link-content">
                     <div class="link-title" data-he="megged.co.il" data-en="megged.co.il">megged.co.il</div>
-                    <div class="link-desc" data-he="האתר הראשי - מאמרים, בלוג, יצירת קשר" data-en="Main site - articles, blog, contact">האתר הראשי - מאמרים, בלוג, יצירת קשר</div>
+                    <div class="link-desc" data-he="האתר הראשי — מאמרים, בלוג, יצירת קשר" data-en="Main site — articles, blog, contact">האתר הראשי — מאמרים, בלוג, יצירת קשר</div>
                 </div>
-                <span class="arrow">&larr;</span>
+                <span class="arrow">&#8592;</span>
             </a>
-            <a href="https://worthinesspsychotherapy.com/" target="_blank" rel="noopener" class="link-card">
-                <div class="icon">&#127758;</div>
+            <a href="https://worthinesspsychotherapy.com/" target="_blank" rel="noopener" class="link-card" data-animate>
+                <div class="icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                </div>
                 <div class="link-content">
                     <div class="link-title" data-he="Worthiness Psychotherapy" data-en="Worthiness Psychotherapy">Worthiness Psychotherapy</div>
-                    <div class="link-desc" data-he="האתר הבינלאומי - באנגלית" data-en="International site - in English">האתר הבינלאומי - באנגלית</div>
+                    <div class="link-desc" data-he="האתר הבינלאומי — באנגלית" data-en="International site — in English">האתר הבינלאומי — באנגלית</div>
                 </div>
-                <span class="arrow">&larr;</span>
+                <span class="arrow">&#8592;</span>
             </a>
-            <a href="https://www.being-worthy.co.il/" target="_blank" rel="noopener" class="link-card">
-                <div class="icon">&#10024;</div>
+            <a href="https://www.being-worthy.co.il/" target="_blank" rel="noopener" class="link-card" data-animate>
+                <div class="icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+                    </svg>
+                </div>
                 <div class="link-content">
                     <div class="link-title" data-he="being-worthy.co.il" data-en="being-worthy.co.il">being-worthy.co.il</div>
                     <div class="link-desc" data-he="סדנאות לזוגות ולנשים" data-en="Workshops for couples and women">סדנאות לזוגות ולנשים</div>
                 </div>
-                <span class="arrow">&larr;</span>
+                <span class="arrow">&#8592;</span>
             </a>
         </div>
 
-        <!-- ===== MEDIA ===== -->
-        <div class="section-label" id="labelMedia">מדיה ותוכן</div>
-        <div class="links" id="linksMedia">
-            <a href="https://megged.co.il/" target="_blank" rel="noopener" class="link-card gold">
-                <div class="icon">&#127908;</div>
-                <div class="link-content">
-                    <div class="link-title" data-he="הרצאות וראיונות" data-en="Lectures & Interviews">הרצאות וראיונות</div>
-                    <div class="link-desc" data-he="סרטונים מקצועיים על ראויות וזוגיות" data-en="Professional videos on worthiness and relationships">סרטונים מקצועיים על ראויות וזוגיות</div>
+        <!-- Testimonials -->
+        <div class="section-header" data-animate>
+            <span class="section-line"></span>
+            <span class="section-label" id="labelTestimonials" data-he="מה אומרים המשתתפים" data-en="What Participants Say">מה אומרים המשתתפים</span>
+            <span class="section-line"></span>
+        </div>
+        <div class="testimonials-carousel" id="testimonialsCarousel">
+            <div class="testimonial-slide active" data-testimonial="0">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text" data-he="״הסדנה שינתה לנו את החיים. הבנו לעומק מה זה להיות זוג ראוי ואיך לבנות קשר אמיתי ומובחן.״" data-en="&ldquo;The workshop changed our lives. We deeply understood what it means to be a worthy couple and how to build an authentic connection.&rdquo;">"הסדנה שינתה לנו את החיים. הבנו לעומק מה זה להיות זוג ראוי ואיך לבנות קשר אמיתי ומובחן."</p>
+                    <div class="testimonial-author" data-he="מיכל ודוד כ." data-en="Michal & David K.">מיכל ודוד כ.</div>
+                    <div class="testimonial-role" data-he="בוגרי סדנת 'להיות זוג ראוי'" data-en="'Being a Worthy Couple' graduates">בוגרי סדנת 'להיות זוג ראוי'</div>
                 </div>
-                <span class="arrow">&larr;</span>
-            </a>
-            <a href="https://megged.co.il/" target="_blank" rel="noopener" class="link-card">
-                <div class="icon">&#128221;</div>
-                <div class="link-content">
-                    <div class="link-title" data-he="בלוג ומאמרים" data-en="Blog & Articles">בלוג ומאמרים</div>
-                    <div class="link-desc" data-he="כתיבה על מערכות יחסים, אינטימיות ומובחנות" data-en="Writing on relationships, intimacy and differentiation">כתיבה על מערכות יחסים, אינטימיות ומובחנות</div>
+            </div>
+            <div class="testimonial-slide" data-testimonial="1">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text" data-he="״גישת הראויות נתנה לי כלים שלא מצאתי בשום מקום אחר. אני מטפלת טובה יותר ואישה שלמה יותר.״" data-en="&ldquo;The worthiness approach gave me tools I couldn't find anywhere else. I'm a better therapist and a more whole woman.&rdquo;">"גישת הראויות נתנה לי כלים שלא מצאתי בשום מקום אחר. אני מטפלת טובה יותר ואישה שלמה יותר."</p>
+                    <div class="testimonial-author" data-he="ד״ר רונית ש." data-en="Dr. Ronit S.">ד״ר רונית ש.</div>
+                    <div class="testimonial-role" data-he="בוגרת ההכשרה התלת-שנתית" data-en="3-Year Training Program graduate">בוגרת ההכשרה התלת-שנתית</div>
                 </div>
-                <span class="arrow">&larr;</span>
+            </div>
+            <div class="testimonial-slide" data-testimonial="2">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text" data-he="״הספר 'להיות ראוי' פתח לי צוהר לעולם שלם. מובחנות זה לא רק מושג — זה אורח חיים.״" data-en="&ldquo;The book 'Earning Worthiness' opened a window to a whole world. Differentiation isn't just a concept — it's a way of life.&rdquo;">"הספר 'להיות ראוי' פתח לי צוהר לעולם שלם. מובחנות זה לא רק מושג — זה אורח חיים."</p>
+                    <div class="testimonial-author" data-he="אורן מ." data-en="Oren M.">אורן מ.</div>
+                    <div class="testimonial-role" data-he="קורא ומשתתף סדנאות" data-en="Reader & workshop participant">קורא ומשתתף סדנאות</div>
+                </div>
+            </div>
+            <div class="testimonial-slide" data-testimonial="3">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text" data-he="״סדנת 'להיות ראויה' היתה חוויה מעצימה. גיליתי חלקים בעצמי שלא הכרתי, וקיבלתי כלים לצמיחה אמיתית.״" data-en="&ldquo;The 'Being Worthy' workshop was an empowering experience. I discovered parts of myself I didn't know, and gained tools for real growth.&rdquo;">"סדנת 'להיות ראויה' היתה חוויה מעצימה. גיליתי חלקים בעצמי שלא הכרתי, וקיבלתי כלים לצמיחה אמיתית."</p>
+                    <div class="testimonial-author" data-he="שירה ל." data-en="Shira L.">שירה ל.</div>
+                    <div class="testimonial-role" data-he="בוגרת סדנת 'להיות ראויה'" data-en="'Being a Worthy Woman' graduate">בוגרת סדנת 'להיות ראויה'</div>
+                </div>
+            </div>
+            <div class="testimonial-dots" role="tablist">
+                <button class="testimonial-dot active" data-tindex="0" role="tab" aria-selected="true" aria-label="Testimonial 1"></button>
+                <button class="testimonial-dot" data-tindex="1" role="tab" aria-selected="false" aria-label="Testimonial 2"></button>
+                <button class="testimonial-dot" data-tindex="2" role="tab" aria-selected="false" aria-label="Testimonial 3"></button>
+                <button class="testimonial-dot" data-tindex="3" role="tab" aria-selected="false" aria-label="Testimonial 4"></button>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="contact-bar" data-animate>
+            <a href="https://wa.me/9720584355744" target="_blank" rel="noopener" class="contact-btn whatsapp" title="WhatsApp" aria-label="WhatsApp">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="#25D366">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+            </a>
+            <a href="mailto:amittai@megged.co.il" class="contact-btn email" title="Email" aria-label="Email">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A5D23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+            </a>
+            <a href="tel:+972584355744" class="contact-btn phone" title="Phone" aria-label="Phone">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C4A052" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
             </a>
         </div>
 
-        <!-- ===== CONTACT ===== -->
-        <div class="contact-bar">
-            <a href="https://wa.me/9720584355744" target="_blank" rel="noopener" class="contact-btn whatsapp" title="WhatsApp">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <!-- Footer -->
+        <footer>
+            <p class="copyright">&copy; 2026 Amitai &amp; Shuly Megged</p>
+            <a href="https://megged.co.il" class="brand" target="_blank" rel="noopener">
+                <span>🌿</span>
+                <span>Worthiness Psychotherapy</span>
             </a>
-            <a href="mailto:amittai@megged.co.il" class="contact-btn email" title="Email">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7a00df" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </a>
-            <a href="tel:+972584355744" class="contact-btn phone" title="Phone">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            </a>
-        </div>
-
-        <!-- ===== FOOTER ===== -->
-        <footer class="footer">
-            <p class="quote" id="footerQuote">&#x201F;ראויות אינה משהו שמגיע לנו - היא משהו שאנחנו מרוויחים דרך המעשים שלנו&#x201E;</p>
-            <p>&copy; 2026 Amitai & Shuly Megged</p>
         </footer>
+    </main>
 
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
+
+    <!-- Newsletter Signup Modal -->
+    <div class="funnel-overlay" id="newsletterModal">
+        <div class="funnel-modal">
+            <button class="funnel-close" id="newsletterClose" aria-label="Close">&times;</button>
+            <div id="newsletterForm">
+                <h3 id="nlTitle" data-he="הישארו מעודכנים" data-en="Stay Updated">הישארו מעודכנים</h3>
+                <p class="funnel-subtitle" id="nlSubtitle" data-he="קבלו תובנות על זוגיות, ראויות ומובחנות ישירות לתיבת המייל" data-en="Get insights on relationships, worthiness and differentiation delivered to your inbox">קבלו תובנות על זוגיות, ראויות ומובחנות ישירות לתיבת המייל</p>
+                <form class="funnel-form" id="nlFormEl" onsubmit="return false;">
+                    <input type="text" class="funnel-input" id="nlName" required data-placeholder-he="שם מלא" data-placeholder-en="Full name" placeholder="שם מלא">
+                    <input type="email" class="funnel-input" id="nlEmail" required data-placeholder-he="אימייל" data-placeholder-en="Email" placeholder="אימייל">
+                    <select class="funnel-select" id="nlInterest">
+                        <option value="" id="nlOpt0" data-he="תחום עניין" data-en="Area of interest">תחום עניין</option>
+                        <option value="couples" id="nlOpt1" data-he="סדנאות לזוגות" data-en="Couples workshops">סדנאות לזוגות</option>
+                        <option value="women" id="nlOpt2" data-he="סדנאות לנשים" data-en="Women's workshops">סדנאות לנשים</option>
+                        <option value="professional" id="nlOpt3" data-he="הכשרות מקצועיות" data-en="Professional training">הכשרות מקצועיות</option>
+                        <option value="books" id="nlOpt4" data-he="ספרים ותוכן" data-en="Books & content">ספרים ותוכן</option>
+                        <option value="all" id="nlOpt5" data-he="הכל" data-en="Everything">הכל</option>
+                    </select>
+                    <button type="submit" class="funnel-submit" id="nlSubmit" data-he="הרשמה" data-en="Subscribe">הרשמה</button>
+                </form>
+                <p class="funnel-privacy" id="nlPrivacy" data-he="לא נשלח ספאם. ניתן לבטל בכל עת." data-en="No spam. Unsubscribe anytime.">לא נשלח ספאם. ניתן לבטל בכל עת.</p>
+            </div>
+            <div id="newsletterSuccess" class="funnel-success" style="display:none;">
+                <div class="check-icon">&#10003;</div>
+                <h3 id="nlSuccessTitle" data-he="תודה על ההרשמה!" data-en="Thank you!">תודה על ההרשמה!</h3>
+                <p id="nlSuccessText" data-he="נשלח לך תובנות ועדכונים בקרוב." data-en="We'll send you insights and updates soon.">נשלח לך תובנות ועדכונים בקרוב.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exit Intent Popup -->
+    <div class="funnel-overlay exit-modal" id="exitModal">
+        <div class="funnel-modal">
+            <button class="funnel-close" id="exitClose" aria-label="Close">&times;</button>
+            <div id="exitContent">
+                <div class="exit-icon">&#128218;</div>
+                <h3 id="exitTitle" data-he="לפני שאת/ה עוזב/ת..." data-en="Before you go...">לפני שאת/ה עוזב/ת...</h3>
+                <p class="exit-offer" id="exitOffer" data-he="הורידו בחינם: 5 עקרונות לזוגיות ראויה" data-en="Free download: 5 Principles of a Worthy Relationship">הורידו בחינם: 5 עקרונות לזוגיות ראויה</p>
+                <form class="exit-form" id="exitFormEl" onsubmit="return false;">
+                    <input type="email" class="funnel-input" id="exitEmail" required data-placeholder-he="אימייל" data-placeholder-en="Email" placeholder="אימייל">
+                    <button type="submit" class="funnel-submit" id="exitSubmit" data-he="הורדה" data-en="Download">הורדה</button>
+                </form>
+            </div>
+            <div id="exitSuccess" class="funnel-success" style="display:none;">
+                <div class="check-icon">&#10003;</div>
+                <h3 id="exitSuccessTitle" data-he="הקובץ בדרך אליך!" data-en="File on its way!">הקובץ בדרך אליך!</h3>
+                <p id="exitSuccessText" data-he="בדקו את תיבת המייל שלכם." data-en="Check your email inbox.">בדקו את תיבת המייל שלכם.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/9720584355744?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%9E%D7%99%D7%AA%D7%99%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%2F%D7%AA%20%D7%91%D7%9E%D7%99%D7%93%D7%A2%20%D7%A0%D7%95%D7%A1%D7%A3" target="_blank" rel="noopener" class="whatsapp-float" id="waFloat" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span class="wa-tooltip" id="waTooltip" data-he="שלחו הודעה בוואטסאפ" data-en="Send a WhatsApp message">שלחו הודעה בוואטסאפ</span>
+    </a>
+
+    <!-- Sticky CTA Bar -->
+    <div class="sticky-cta" id="stickyCta">
+        <button class="sticky-cta-close" id="stickyCtaClose" aria-label="Close">&times;</button>
+        <span class="sticky-cta-text" id="stickyCtaText" data-he="מעוניינים בסדנה הקרובה?" data-en="Interested in the next workshop?">מעוניינים בסדנה הקרובה?</span>
+        <a href="https://www.being-worthy.co.il/" target="_blank" rel="noopener" class="sticky-cta-btn" id="stickyCtaBtn" data-he="לפרטים והרשמה" data-en="Details & Registration">לפרטים והרשמה</a>
+    </div>
+
+    <!-- Cookie Consent Bar -->
+    <div class="cookie-consent" id="cookieConsent">
+        <span id="cookieText" data-he="אתר זה משתמש בקבצי cookie לשיפור חוויית המשתמש." data-en="This site uses cookies to improve your experience.">אתר זה משתמש בקבצי cookie לשיפור חוויית המשתמש.</span>
+        <button class="cookie-consent-btn" id="cookieAccept" data-he="מאשר/ת" data-en="Accept">מאשר/ת</button>
     </div>
 
     <script>
+    (function() {
+        'use strict';
+
+        // ===== Language System =====
         let currentLang = 'he';
 
         const translations = {
             he: {
                 name: 'אמיתי מגד',
                 bio: 'מטפל זוגי ומשפחתי, מחבר, מרצה ומדריך. ראש תכנית ההכשרה לטיפול זוגי ומשפחתי במכללת תל-חי.',
-                credBooks: '5 ספרים',
-                credExp: '30+ שנות ניסיון',
-                labelPrograms: 'סדנאות ותכניות',
-                labelTraining: 'הכשרות לאנשי מקצוע',
-                labelBooks: 'ספרים',
-                labelSites: 'אתרים',
-                labelMedia: 'מדיה ותוכן',
-                quote: '\u201Fראויות אינה משהו שמגיע לנו - היא משהו שאנחנו מרוויחים דרך המעשים שלנו\u201E',
-                langBtn: 'EN',
-                avatar: 'א.מ'
+                langBtn: 'EN'
             },
             en: {
                 name: 'Amitai Megged',
                 bio: 'Couples & family therapist, author, lecturer and supervisor. Head of the couple & family therapy training program at Tel Hai College.',
-                credBooks: '5 Books',
-                credExp: '30+ Years',
-                labelPrograms: 'Workshops & Programs',
-                labelTraining: 'Professional Training',
-                labelBooks: 'Books',
-                labelSites: 'Websites',
-                labelMedia: 'Media & Content',
-                quote: '"Worthiness is not something we are entitled to — it is something we earn through our actions."',
-                langBtn: 'עב',
-                avatar: 'A.M'
+                langBtn: 'עב'
             }
         };
 
-        function toggleLang() {
+        window.toggleLang = function() {
             currentLang = currentLang === 'he' ? 'en' : 'he';
-            const t = translations[currentLang];
-            const html = document.documentElement;
+            var t = translations[currentLang];
+            var html = document.documentElement;
 
             html.setAttribute('lang', currentLang);
             html.setAttribute('dir', currentLang === 'he' ? 'rtl' : 'ltr');
 
-            document.getElementById('profileName').textContent = t.name;
+            document.getElementById('heroName').textContent = t.name;
             document.getElementById('profileBio').textContent = t.bio;
-            document.getElementById('credBooks').textContent = t.credBooks;
-            document.getElementById('credExp').textContent = t.credExp;
-            document.getElementById('labelPrograms').textContent = t.labelPrograms;
-            document.getElementById('labelTraining').textContent = t.labelTraining;
-            document.getElementById('labelBooks').textContent = t.labelBooks;
-            document.getElementById('labelSites').textContent = t.labelSites;
-            document.getElementById('labelMedia').textContent = t.labelMedia;
-            document.getElementById('footerQuote').textContent = t.quote;
             document.getElementById('langBtn').textContent = t.langBtn;
-            document.getElementById('profileAvatar').textContent = t.avatar;
 
             // Update all translatable elements
-            document.querySelectorAll('[data-' + currentLang + ']').forEach(el => {
-                el.textContent = el.getAttribute('data-' + currentLang);
+            document.querySelectorAll('[data-' + currentLang + ']').forEach(function(el) {
+                var val = el.getAttribute('data-' + currentLang);
+                if (val) el.textContent = val;
             });
 
             // Update arrow direction
-            document.querySelectorAll('.arrow').forEach(el => {
-                el.innerHTML = currentLang === 'he' ? '&larr;' : '&rarr;';
+            document.querySelectorAll('.arrow').forEach(function(el) {
+                el.innerHTML = currentLang === 'he' ? '&#8592;' : '&#8594;';
+            });
+        };
+
+        // ===== Dark Mode =====
+        var savedTheme = localStorage.getItem('megged-theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        window.toggleTheme = function() {
+            var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('megged-theme', 'light');
+                document.getElementById('themeIcon').innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('megged-theme', 'dark');
+                document.getElementById('themeIcon').innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+            }
+        };
+
+        // Set initial icon state
+        if (document.documentElement.getAttribute('data-theme') === 'dark') {
+            document.getElementById('themeIcon').innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+        }
+
+        // ===== Hero Reveal Effect =====
+        var heroSection = document.getElementById('heroSection');
+        var heroRevealLayer = document.getElementById('heroRevealLayer');
+        var heroLayers = heroSection.querySelectorAll('.hero-layer');
+        var heroMouseX = 0;
+        var heroMouseY = 0;
+
+        heroSection.addEventListener('mousemove', function(e) {
+            var rect = heroSection.getBoundingClientRect();
+            heroMouseX = e.clientX - rect.left;
+            heroMouseY = e.clientY - rect.top;
+
+            // Mask reveal
+            var maskSize = 220;
+            heroRevealLayer.style.maskImage = 'radial-gradient(circle at ' + heroMouseX + 'px ' + heroMouseY + 'px, transparent 80px, black ' + maskSize + 'px)';
+            heroRevealLayer.style.webkitMaskImage = 'radial-gradient(circle at ' + heroMouseX + 'px ' + heroMouseY + 'px, transparent 80px, black ' + maskSize + 'px)';
+
+            // Subtle parallax on layers
+            var moveX = (heroSection.offsetWidth / 2 - heroMouseX) * 0.02;
+            var moveY = (heroSection.offsetHeight / 2 - heroMouseY) * 0.02;
+            heroLayers.forEach(function(layer) {
+                layer.style.transform = 'translate(' + moveX + 'px, ' + moveY + 'px) scale(1.08)';
+            });
+        });
+
+        heroSection.addEventListener('mouseleave', function() {
+            // Reset mask to center
+            var cx = heroSection.offsetWidth / 2;
+            var cy = heroSection.offsetHeight / 2;
+            heroRevealLayer.style.maskImage = 'radial-gradient(circle at ' + cx + 'px ' + cy + 'px, transparent 80px, black 220px)';
+            heroRevealLayer.style.webkitMaskImage = 'radial-gradient(circle at ' + cx + 'px ' + cy + 'px, transparent 80px, black 220px)';
+            heroLayers.forEach(function(layer) {
+                layer.style.transform = 'translate(0, 0) scale(1.08)';
+            });
+        });
+
+        // Initialize mask at center
+        (function() {
+            var cx = heroSection.offsetWidth / 2;
+            var cy = heroSection.offsetHeight / 2;
+            heroRevealLayer.style.maskImage = 'radial-gradient(circle at ' + cx + 'px ' + cy + 'px, transparent 80px, black 220px)';
+            heroRevealLayer.style.webkitMaskImage = 'radial-gradient(circle at ' + cx + 'px ' + cy + 'px, transparent 80px, black 220px)';
+            heroLayers.forEach(function(layer) {
+                layer.style.transform = 'scale(1.08)';
+            });
+        })();
+
+        // ===== Custom Cursor (desktop only) =====
+        var cursorRing = document.querySelector('.cursor-ring');
+        var cursorDot = document.querySelector('.cursor-dot');
+
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && cursorRing && cursorDot) {
+            var cMouseX = 0, cMouseY = 0;
+            var ringX = 0, ringY = 0;
+
+            document.addEventListener('mousemove', function(e) {
+                cMouseX = e.clientX;
+                cMouseY = e.clientY;
+                cursorDot.style.left = cMouseX + 'px';
+                cursorDot.style.top = cMouseY + 'px';
+            });
+
+            // Smooth ring follow
+            function animateRing() {
+                ringX += (cMouseX - ringX) * 0.15;
+                ringY += (cMouseY - ringY) * 0.15;
+                cursorRing.style.left = ringX + 'px';
+                cursorRing.style.top = ringY + 'px';
+                requestAnimationFrame(animateRing);
+            }
+            animateRing();
+
+            // Hover effect on interactable elements
+            document.querySelectorAll('a, button, .link-card, .book-card, .contact-btn').forEach(function(el) {
+                el.addEventListener('mouseenter', function() { cursorRing.classList.add('hovering'); });
+                el.addEventListener('mouseleave', function() { cursorRing.classList.remove('hovering'); });
             });
         }
 
-        // Smooth scroll behavior
-        document.querySelectorAll('.link-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.willChange = 'transform';
+        // ===== IntersectionObserver for staggered animations =====
+        var animateEls = document.querySelectorAll('[data-animate]');
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry, i) {
+                    if (entry.isIntersecting) {
+                        var delay = 0;
+                        // Find sibling index for stagger
+                        var parent = entry.target.parentElement;
+                        if (parent) {
+                            var siblings = parent.querySelectorAll('[data-animate]');
+                            siblings.forEach(function(sib, idx) {
+                                if (sib === entry.target) delay = idx * 80;
+                            });
+                        }
+                        setTimeout(function() {
+                            entry.target.classList.add('visible');
+                            entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                        }, delay);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+            animateEls.forEach(function(el) {
+                observer.observe(el);
             });
-            card.addEventListener('mouseleave', () => {
-                card.style.willChange = 'auto';
+        } else {
+            // Fallback: show everything
+            animateEls.forEach(function(el) { el.classList.add('visible'); });
+        }
+
+        // ===== Counter Animation for Stats =====
+        var statsAnimated = false;
+        var statsBar = document.querySelector('.stats-bar');
+
+        function animateCounters() {
+            if (statsAnimated) return;
+            statsAnimated = true;
+
+            document.querySelectorAll('.stat-number').forEach(function(el) {
+                var target = parseInt(el.getAttribute('data-count'), 10);
+                var suffix = el.getAttribute('data-suffix') || '';
+                var useComma = el.getAttribute('data-format') === 'comma';
+                var duration = 1800;
+                var start = 0;
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    // Ease out cubic
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    var current = Math.round(start + (target - start) * eased);
+                    var display = useComma ? current.toLocaleString() : current.toString();
+                    el.textContent = display + suffix;
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    }
+                }
+
+                requestAnimationFrame(step);
+            });
+        }
+
+        if ('IntersectionObserver' in window && statsBar) {
+            var statsObserver = new IntersectionObserver(function(entries) {
+                if (entries[0].isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(statsBar);
+                }
+            }, { threshold: 0.3 });
+            statsObserver.observe(statsBar);
+        }
+
+        // ===== Quote Carousel =====
+        var quoteSlides = document.querySelectorAll('.quote-slide');
+        var quoteDots = document.querySelectorAll('.quote-dot');
+        var currentQuote = 0;
+        var quoteInterval;
+
+        function showQuote(index) {
+            quoteSlides.forEach(function(s) { s.classList.remove('active'); });
+            quoteDots.forEach(function(d) { d.classList.remove('active'); d.setAttribute('aria-selected', 'false'); });
+            quoteSlides[index].classList.add('active');
+            quoteDots[index].classList.add('active');
+            quoteDots[index].setAttribute('aria-selected', 'true');
+            currentQuote = index;
+        }
+
+        function nextQuote() {
+            showQuote((currentQuote + 1) % quoteSlides.length);
+        }
+
+        quoteDots.forEach(function(dot) {
+            dot.addEventListener('click', function() {
+                var idx = parseInt(dot.getAttribute('data-index'), 10);
+                showQuote(idx);
+                clearInterval(quoteInterval);
+                quoteInterval = setInterval(nextQuote, 6000);
             });
         });
+
+        quoteInterval = setInterval(nextQuote, 6000);
+
+        // ===== Back to Top =====
+        var backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        // ===== GSAP ScrollTrigger (if loaded) =====
+        function initGSAP() {
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Parallax on hero during scroll
+            gsap.to('.hero-content', {
+                y: 80,
+                opacity: 0,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.hero',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+
+            // Fade in sections
+            document.querySelectorAll('.section-header').forEach(function(header) {
+                gsap.from(header, {
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.6,
+                    scrollTrigger: {
+                        trigger: header,
+                        start: 'top 85%',
+                        once: true
+                    }
+                });
+            });
+        }
+
+        // Wait for GSAP to load
+        if (document.readyState === 'complete') {
+            initGSAP();
+        } else {
+            window.addEventListener('load', initGSAP);
+        }
+
+    })();
     </script>
 
+    <!-- Analytics Tracking -->
+    <script>
+    (function(){
+        'use strict';
+        var STORAGE_KEY = 'linkhub_analytics';
+
+        function getData() {
+            try {
+                var d = JSON.parse(localStorage.getItem(STORAGE_KEY));
+                if (d && d.visits) return d;
+            } catch(e) {}
+            return { visits: [], clicks: [], scrollDepth: [], timeOnPage: [], toggles: [] };
+        }
+
+        function save(d) {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(d));
+            } catch(e) {}
+        }
+
+        // Visitor fingerprint (no cookies)
+        function getFingerprint() {
+            var s = screen.width + 'x' + screen.height + '|' +
+                Intl.DateTimeFormat().resolvedOptions().timeZone + '|' +
+                navigator.language + '|' + navigator.platform;
+            var hash = 0;
+            for (var i = 0; i < s.length; i++) {
+                hash = ((hash << 5) - hash) + s.charCodeAt(i);
+                hash |= 0;
+            }
+            return 'v' + Math.abs(hash).toString(36);
+        }
+
+        // Device type
+        function getDevice() {
+            var w = screen.width;
+            if (w <= 768) return 'mobile';
+            if (w <= 1024) return 'tablet';
+            return 'desktop';
+        }
+
+        // UTM params
+        function getUTM() {
+            var p = new URLSearchParams(window.location.search);
+            var utm = {};
+            ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(k) {
+                if (p.get(k)) utm[k] = p.get(k);
+            });
+            return Object.keys(utm).length ? utm : null;
+        }
+
+        // Browser name
+        function getBrowser() {
+            var ua = navigator.userAgent;
+            if (ua.indexOf('Firefox') > -1) return 'Firefox';
+            if (ua.indexOf('Edg') > -1) return 'Edge';
+            if (ua.indexOf('Chrome') > -1) return 'Chrome';
+            if (ua.indexOf('Safari') > -1) return 'Safari';
+            return 'Other';
+        }
+
+        // Section name from link
+        function getSection(el) {
+            var node = el;
+            while (node && node !== document.body) {
+                var prev = node.previousElementSibling;
+                while (prev) {
+                    if (prev.classList && prev.classList.contains('section-header')) {
+                        var label = prev.querySelector('.section-label');
+                        return label ? label.textContent : '';
+                    }
+                    prev = prev.previousElementSibling;
+                }
+                node = node.parentElement;
+            }
+            return '';
+        }
+
+        var data = getData();
+        var fp = getFingerprint();
+        var sessionId = Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+
+        // 1. Page View
+        var visit = {
+            ts: new Date().toISOString(),
+            fp: fp,
+            sid: sessionId,
+            ref: document.referrer || 'direct',
+            device: getDevice(),
+            screen: screen.width + 'x' + screen.height,
+            browser: getBrowser(),
+            lang: navigator.language
+        };
+        var utm = getUTM();
+        if (utm) visit.utm = utm;
+        data.visits.push(visit);
+        save(data);
+
+        // 2. Link Clicks
+        document.addEventListener('click', function(e) {
+            var link = e.target.closest('a.link-card, a.book-card, a.contact-btn');
+            if (!link) return;
+            var d = getData();
+            d.clicks.push({
+                ts: new Date().toISOString(),
+                fp: fp,
+                sid: sessionId,
+                url: link.href,
+                title: (link.querySelector('.link-title, .book-title') || {}).textContent || link.title || link.getAttribute('aria-label') || '',
+                section: getSection(link)
+            });
+            save(d);
+        });
+
+        // 3. Scroll Depth
+        var scrollMilestones = {};
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(function() {
+                ticking = false;
+                var docH = document.documentElement.scrollHeight - window.innerHeight;
+                if (docH <= 0) return;
+                var pct = Math.round((window.scrollY / docH) * 100);
+                [25, 50, 75, 100].forEach(function(m) {
+                    if (pct >= m && !scrollMilestones[m]) {
+                        scrollMilestones[m] = true;
+                        var d = getData();
+                        d.scrollDepth.push({
+                            ts: new Date().toISOString(),
+                            fp: fp,
+                            sid: sessionId,
+                            depth: m
+                        });
+                        save(d);
+                    }
+                });
+            });
+        }, { passive: true });
+
+        // 4. Time on Page (every 30s)
+        var pageStart = Date.now();
+        setInterval(function() {
+            var d = getData();
+            d.timeOnPage.push({
+                ts: new Date().toISOString(),
+                fp: fp,
+                sid: sessionId,
+                seconds: Math.round((Date.now() - pageStart) / 1000)
+            });
+            save(d);
+        }, 30000);
+
+        // 5. Language Toggle
+        var origToggleLang = window.toggleLang;
+        window.toggleLang = function() {
+            origToggleLang();
+            var d = getData();
+            d.toggles.push({
+                ts: new Date().toISOString(),
+                fp: fp,
+                sid: sessionId,
+                type: 'lang',
+                value: document.documentElement.getAttribute('lang')
+            });
+            save(d);
+        };
+
+        // 6. Dark Mode Toggle
+        var origToggleTheme = window.toggleTheme;
+        window.toggleTheme = function() {
+            origToggleTheme();
+            var d = getData();
+            d.toggles.push({
+                ts: new Date().toISOString(),
+                fp: fp,
+                sid: sessionId,
+                type: 'theme',
+                value: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+            });
+            save(d);
+        };
+    })();
+    </script>
+
+    <!-- Funnel & Lead Capture -->
+    <script>
+    (function() {
+        'use strict';
+
+        // ===== Helper: get current language =====
+        function getLang() {
+            return document.documentElement.getAttribute('lang') || 'he';
+        }
+
+        // ===== Helper: update bilingual placeholders =====
+        function updateFunnelLang() {
+            var lang = getLang();
+            document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(function(el) {
+                el.placeholder = el.getAttribute('data-placeholder-' + lang);
+            });
+            // Update select options and other text elements
+            document.querySelectorAll('#newsletterModal [data-' + lang + '], #exitModal [data-' + lang + '], #waTooltip[data-' + lang + '], #stickyCta [data-' + lang + '], #cookieConsent [data-' + lang + '], #timeGreeting[data-' + lang + ']').forEach(function(el) {
+                var val = el.getAttribute('data-' + lang);
+                if (val) {
+                    if (el.tagName === 'OPTION' || el.tagName === 'SPAN' || el.tagName === 'P' || el.tagName === 'H3' || el.tagName === 'DIV' || el.tagName === 'BUTTON' || el.tagName === 'A') {
+                        el.textContent = val;
+                    }
+                }
+            });
+        }
+
+        // Hook into existing toggleLang to update funnel elements
+        var origLangToggle = window.toggleLang;
+        window.toggleLang = function() {
+            origLangToggle();
+            updateFunnelLang();
+        };
+
+        // ===== 1. Newsletter Signup Modal =====
+        var nlModal = document.getElementById('newsletterModal');
+        var nlClose = document.getElementById('newsletterClose');
+        var nlFormEl = document.getElementById('nlFormEl');
+        var nlTriggered = false;
+        var nlDismissKey = 'linkhub_nl_dismissed';
+        var nlSubscribedKey = 'linkhub_nl_subscribed';
+        var nlSubscribersKey = 'linkhub_subscribers';
+
+        function isNlDismissed() {
+            try {
+                var dismissed = localStorage.getItem(nlDismissKey);
+                if (!dismissed) return false;
+                var ts = parseInt(dismissed, 10);
+                // 7-day expiry
+                return (Date.now() - ts) < 7 * 24 * 60 * 60 * 1000;
+            } catch(e) { return false; }
+        }
+
+        function isNlSubscribed() {
+            return localStorage.getItem(nlSubscribedKey) === 'true';
+        }
+
+        function showNewsletter() {
+            if (nlTriggered || isNlDismissed() || isNlSubscribed()) return;
+            nlTriggered = true;
+            nlModal.classList.add('active');
+            // Hide sticky CTA while modal is open
+            var stickyCta = document.getElementById('stickyCta');
+            if (stickyCta) stickyCta.classList.add('hidden');
+        }
+
+        function hideNewsletter() {
+            nlModal.classList.remove('active');
+            localStorage.setItem(nlDismissKey, Date.now().toString());
+            // Restore sticky CTA
+            var stickyCta = document.getElementById('stickyCta');
+            if (stickyCta && !stickyCta.classList.contains('dismissed')) {
+                stickyCta.classList.remove('hidden');
+            }
+        }
+
+        nlClose.addEventListener('click', hideNewsletter);
+        nlModal.addEventListener('click', function(e) {
+            if (e.target === nlModal) hideNewsletter();
+        });
+
+        // Trigger: 20s timeout OR 60% scroll (whichever first)
+        var nlTimer = setTimeout(showNewsletter, 20000);
+
+        var nlScrollTriggered = false;
+        window.addEventListener('scroll', function() {
+            if (nlScrollTriggered || nlTriggered) return;
+            var docH = document.documentElement.scrollHeight - window.innerHeight;
+            if (docH <= 0) return;
+            var pct = window.scrollY / docH;
+            if (pct >= 0.6) {
+                nlScrollTriggered = true;
+                clearTimeout(nlTimer);
+                showNewsletter();
+            }
+        }, { passive: true });
+
+        // Form submission
+        nlFormEl.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = document.getElementById('nlName').value.trim();
+            var email = document.getElementById('nlEmail').value.trim();
+            var interest = document.getElementById('nlInterest').value;
+
+            if (!name || !email) return;
+
+            // Store subscriber
+            var subscribers = [];
+            try {
+                subscribers = JSON.parse(localStorage.getItem(nlSubscribersKey)) || [];
+            } catch(e) {}
+            subscribers.push({
+                name: name,
+                email: email,
+                interest: interest,
+                ts: new Date().toISOString()
+            });
+            localStorage.setItem(nlSubscribersKey, JSON.stringify(subscribers));
+            localStorage.setItem(nlSubscribedKey, 'true');
+
+            // Show success
+            document.getElementById('newsletterForm').style.display = 'none';
+            document.getElementById('newsletterSuccess').style.display = 'block';
+
+            // Auto close after 3s
+            setTimeout(hideNewsletter, 3000);
+        });
+
+        // ===== 2. Exit Intent Popup (Desktop Only) =====
+        var exitModal = document.getElementById('exitModal');
+        var exitClose = document.getElementById('exitClose');
+        var exitFormEl = document.getElementById('exitFormEl');
+        var exitShown = false;
+        var exitSessionKey = 'linkhub_exit_shown';
+
+        function showExitIntent() {
+            if (exitShown || sessionStorage.getItem(exitSessionKey) || nlModal.classList.contains('active')) return;
+            exitShown = true;
+            sessionStorage.setItem(exitSessionKey, 'true');
+            exitModal.classList.add('active');
+        }
+
+        function hideExitIntent() {
+            exitModal.classList.remove('active');
+        }
+
+        exitClose.addEventListener('click', hideExitIntent);
+        exitModal.addEventListener('click', function(e) {
+            if (e.target === exitModal) hideExitIntent();
+        });
+
+        // Desktop only: detect mouse leaving viewport top
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            document.addEventListener('mouseout', function(e) {
+                if (e.clientY <= 0 && e.relatedTarget === null) {
+                    showExitIntent();
+                }
+            });
+        }
+
+        exitFormEl.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var email = document.getElementById('exitEmail').value.trim();
+            if (!email) return;
+
+            // Store lead
+            var subscribers = [];
+            try {
+                subscribers = JSON.parse(localStorage.getItem(nlSubscribersKey)) || [];
+            } catch(e) {}
+            subscribers.push({
+                name: '',
+                email: email,
+                interest: 'lead_magnet',
+                ts: new Date().toISOString()
+            });
+            localStorage.setItem(nlSubscribersKey, JSON.stringify(subscribers));
+
+            // Show success
+            document.getElementById('exitContent').style.display = 'none';
+            document.getElementById('exitSuccess').style.display = 'block';
+
+            setTimeout(hideExitIntent, 3000);
+        });
+
+        // ===== 3. Floating WhatsApp Button =====
+        var waFloat = document.getElementById('waFloat');
+        setTimeout(function() {
+            waFloat.classList.add('visible');
+        }, 5000);
+
+        // ===== 4. Sticky CTA Bar =====
+        var stickyCta = document.getElementById('stickyCta');
+        var stickyCtaClose = document.getElementById('stickyCtaClose');
+        var stickyDismissed = false;
+
+        setTimeout(function() {
+            if (!stickyDismissed) {
+                stickyCta.classList.add('visible');
+                document.body.classList.add('has-sticky-cta');
+            }
+        }, 3000);
+
+        stickyCtaClose.addEventListener('click', function() {
+            stickyCta.classList.remove('visible');
+            stickyCta.classList.add('dismissed');
+            stickyDismissed = true;
+            document.body.classList.remove('has-sticky-cta');
+        });
+
+        // ===== 5. Smart UTM Link Decoration =====
+        document.querySelectorAll('a[target="_blank"]').forEach(function(link) {
+            try {
+                var url = new URL(link.href);
+                if (url.searchParams.has('ref')) return;
+                url.searchParams.set('ref', 'linkhub');
+                url.searchParams.set('utm_source', 'linkhub');
+                link.href = url.toString();
+            } catch(e) {}
+        });
+
+        // ===== 6. Time-Based Greeting =====
+        var greetingEl = document.getElementById('timeGreeting');
+        var hour = new Date().getHours();
+        var greetHe, greetEn;
+
+        if (hour >= 6 && hour < 12) {
+            greetHe = 'בוקר טוב ☀️';
+            greetEn = 'Good morning ☀️';
+        } else if (hour >= 12 && hour < 17) {
+            greetHe = 'צהריים טובים 🌤️';
+            greetEn = 'Good afternoon 🌤️';
+        } else if (hour >= 17 && hour < 21) {
+            greetHe = 'ערב טוב 🌙';
+            greetEn = 'Good evening 🌙';
+        } else {
+            greetHe = 'לילה טוב ✨';
+            greetEn = 'Good night ✨';
+        }
+
+        greetingEl.textContent = greetHe;
+        greetingEl.setAttribute('data-he', greetHe);
+        greetingEl.setAttribute('data-en', greetEn);
+
+        // ===== 7. Returning Visitor Detection =====
+        var returningKey = 'linkhub_returning';
+        if (localStorage.getItem(returningKey)) {
+            var banner = document.createElement('div');
+            banner.className = 'returning-banner';
+            var lang = getLang();
+            banner.textContent = lang === 'he' ? 'שמחים לראות אותך שוב! 👋' : 'Great to see you again! 👋';
+            banner.setAttribute('data-he', 'שמחים לראות אותך שוב! 👋');
+            banner.setAttribute('data-en', 'Great to see you again! 👋');
+            banner.id = 'returningBanner';
+            document.body.appendChild(banner);
+        }
+        localStorage.setItem(returningKey, 'true');
+
+        // ===== 8. Cookie Consent Bar =====
+        var cookieConsent = document.getElementById('cookieConsent');
+        var cookieAccept = document.getElementById('cookieAccept');
+        var cookieKey = 'linkhub_cookie_consent';
+
+        if (!localStorage.getItem(cookieKey)) {
+            setTimeout(function() {
+                cookieConsent.classList.add('visible');
+                // Position above sticky CTA if visible
+                if (stickyCta.classList.contains('visible')) {
+                    cookieConsent.classList.add('with-cta');
+                }
+            }, 1500);
+        }
+
+        cookieAccept.addEventListener('click', function() {
+            cookieConsent.classList.remove('visible');
+            localStorage.setItem(cookieKey, 'true');
+        });
+
+        // ===== 9. Testimonials Carousel =====
+        var tSlides = document.querySelectorAll('.testimonial-slide');
+        var tDots = document.querySelectorAll('.testimonial-dot');
+        var currentT = 0;
+        var tInterval;
+
+        function showTestimonial(index) {
+            tSlides.forEach(function(s) { s.classList.remove('active'); });
+            tDots.forEach(function(d) { d.classList.remove('active'); d.setAttribute('aria-selected', 'false'); });
+            tSlides[index].classList.add('active');
+            tDots[index].classList.add('active');
+            tDots[index].setAttribute('aria-selected', 'true');
+            currentT = index;
+        }
+
+        function nextTestimonial() {
+            showTestimonial((currentT + 1) % tSlides.length);
+        }
+
+        tDots.forEach(function(dot) {
+            dot.addEventListener('click', function() {
+                var idx = parseInt(dot.getAttribute('data-tindex'), 10);
+                showTestimonial(idx);
+                clearInterval(tInterval);
+                tInterval = setInterval(nextTestimonial, 7000);
+            });
+        });
+
+        tInterval = setInterval(nextTestimonial, 7000);
+
+        // ===== 10. Funnel Stage Tracking =====
+        var FUNNEL_KEY = 'linkhub_funnel';
+
+        function getFunnel() {
+            try {
+                var d = JSON.parse(localStorage.getItem(FUNNEL_KEY));
+                if (d && d.stages) return d;
+            } catch(e) {}
+            return { stages: [] };
+        }
+
+        function saveFunnel(d) {
+            try { localStorage.setItem(FUNNEL_KEY, JSON.stringify(d)); } catch(e) {}
+        }
+
+        function trackStage(stage, detail) {
+            var f = getFunnel();
+            f.stages.push({
+                stage: stage,
+                detail: detail || '',
+                ts: new Date().toISOString()
+            });
+            saveFunnel(f);
+        }
+
+        // Stage: visit (on load)
+        trackStage('visit', document.referrer || 'direct');
+
+        // Stage: scroll (first meaningful scroll past 30%)
+        var scrollTracked = false;
+        window.addEventListener('scroll', function() {
+            if (scrollTracked) return;
+            var docH = document.documentElement.scrollHeight - window.innerHeight;
+            if (docH <= 0) return;
+            if ((window.scrollY / docH) >= 0.3) {
+                scrollTracked = true;
+                trackStage('scroll', '30%');
+            }
+        }, { passive: true });
+
+        // Stage: click (on any outbound link)
+        document.addEventListener('click', function(e) {
+            var link = e.target.closest('a[target="_blank"]');
+            if (!link) return;
+            trackStage('click', link.href);
+        });
+
+        // Stage: signup (hooked into newsletter form)
+        var origNlSubmit = nlFormEl.onsubmit;
+        nlFormEl.addEventListener('submit', function() {
+            var email = document.getElementById('nlEmail').value.trim();
+            if (email) trackStage('signup', email);
+        });
+
+        // Stage: contact (WhatsApp float click, contact bar clicks)
+        document.getElementById('waFloat').addEventListener('click', function() {
+            trackStage('contact', 'whatsapp_float');
+        });
+        document.querySelectorAll('.contact-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var type = btn.classList.contains('whatsapp') ? 'whatsapp' : btn.classList.contains('email') ? 'email' : 'phone';
+                trackStage('contact', type);
+            });
+        });
+
+    })();
+    </script>
 </body>
+
 </html>

@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkHub Analytics Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --forest: #4A5D23;
+            --forest-dark: #3A4A1B;
+            --forest-light: #6B8033;
+            --sage: #8B9C6F;
+            --sage-light: #A8B892;
+            --teal: #2D5A5A;
+            --cream: #F8F6F0;
+            --cream-warm: #F5F0E6;
+            --sand: #E8E0D0;
+            --gold: #C4A052;
+            --gold-light: #D4B872;
+            --charcoal: #2C2C2C;
+            --text: #1F1F1F;
+            --text-secondary: #4A4A4A;
+            --text-muted: #7A7A7A;
+            --white: #FFFFFF;
+            --radius: 16px;
+            --shadow: 0 4px 20px rgba(74, 93, 35, 0.08);
+            --shadow-md: 0 8px 40px rgba(74, 93, 35, 0.12);
+            --glass-bg: rgba(255, 255, 255, 0.72);
+            --glass-border: rgba(255, 255, 255, 0.4);
+        }
+
+        [data-theme="dark"] {
+            --cream: #0F1410;
+            --cream-warm: #141A14;
+            --sand: #1E2620;
+            --white: #1A2218;
+            --text: #E8E4DC;
+            --text-secondary: #B8B4AC;
+            --text-muted: #8A8680;
+            --charcoal: #E8E4DC;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 40px rgba(0, 0, 0, 0.4);
+            --glass-bg: rgba(30, 38, 32, 0.75);
+            --glass-border: rgba(74, 93, 35, 0.2);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Auth Gate */
+        .auth-gate {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .auth-gate h2 {
+            font-size: 24px;
+            color: var(--forest);
+        }
+
+        .auth-gate input {
+            padding: 12px 20px;
+            border: 2px solid var(--sage-light);
+            border-radius: 12px;
+            font-size: 16px;
+            text-align: center;
+            background: var(--white);
+            color: var(--text);
+            outline: none;
+            width: 260px;
+            transition: border-color 0.3s;
+        }
+
+        .auth-gate input:focus {
+            border-color: var(--forest);
+        }
+
+        .auth-gate button {
+            padding: 12px 32px;
+            background: var(--forest);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .auth-gate button:hover {
+            background: var(--forest-dark);
+        }
+
+        .auth-error {
+            color: #c0392b;
+            font-size: 14px;
+            min-height: 20px;
+        }
+
+        /* Dashboard */
+        .dashboard { display: none; }
+        .dashboard.visible { display: block; }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: var(--glass-bg);
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-bar h1 {
+            font-size: 20px;
+            color: var(--forest);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .top-bar-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: 1px solid var(--sage-light);
+            border-radius: 10px;
+            background: var(--white);
+            color: var(--text);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--forest);
+            color: #fff;
+            border-color: var(--forest);
+        }
+
+        .btn-danger {
+            border-color: #c0392b;
+            color: #c0392b;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+            color: #fff;
+        }
+
+        .refresh-indicator {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+
+        /* Stat Cards */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        @media (max-width: 768px) {
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stat-card {
+            background: var(--white);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .stat-card .value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--forest);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        [data-theme="dark"] .stat-card .value {
+            color: var(--sage-light);
+        }
+
+        .stat-card .label {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Section */
+        .section {
+            background: var(--white);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .section h3 {
+            font-size: 16px;
+            color: var(--forest);
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--sand);
+        }
+
+        [data-theme="dark"] .section h3 {
+            color: var(--sage-light);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 280px;
+        }
+
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 220px;
+            }
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .data-table th {
+            text-align: right;
+            padding: 10px 12px;
+            background: var(--cream-warm);
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 12px;
+            border-bottom: 2px solid var(--sand);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        [dir="ltr"] .data-table th {
+            text-align: left;
+        }
+
+        .data-table th:hover {
+            color: var(--forest);
+        }
+
+        .data-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--sand);
+            color: var(--text);
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover td {
+            background: var(--cream-warm);
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .empty-state .icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Auth Gate -->
+    <div class="auth-gate" id="authGate">
+        <h2>LinkHub Analytics</h2>
+        <input type="password" id="authPass" placeholder="סיסמה" autofocus>
+        <button onclick="tryAuth()">כניסה</button>
+        <div class="auth-error" id="authError"></div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <div class="top-bar">
+            <h1>LinkHub Analytics</h1>
+            <div class="top-bar-actions">
+                <span class="refresh-indicator" id="refreshTime"></span>
+                <button class="btn" onclick="toggleDashTheme()">מצב כהה</button>
+                <button class="btn" onclick="exportCSV()">ייצוא CSV</button>
+                <button class="btn btn-danger" onclick="clearData()">מחק הכל</button>
+            </div>
+        </div>
+        <div class="container">
+            <!-- Overview Cards -->
+            <div class="stats-row" id="statsRow"></div>
+
+            <!-- Visits Over Time -->
+            <div class="section">
+                <h3>ביקורים לאורך זמן (30 ימים אחרונים)</h3>
+                <div class="chart-container"><canvas id="visitsChart"></canvas></div>
+            </div>
+
+            <div class="grid-2">
+                <!-- Device Breakdown -->
+                <div class="section">
+                    <h3>התפלגות מכשירים</h3>
+                    <div class="chart-container"><canvas id="deviceChart"></canvas></div>
+                </div>
+
+                <!-- Referrer Sources -->
+                <div class="section">
+                    <h3>מקורות תנועה</h3>
+                    <div class="chart-container"><canvas id="referrerChart"></canvas></div>
+                </div>
+            </div>
+
+            <!-- Click Analytics -->
+            <div class="section">
+                <h3>ניתוח קליקים</h3>
+                <div id="clicksTable"></div>
+            </div>
+
+            <!-- Scroll Depth -->
+            <div class="section">
+                <h3>עומק גלילה</h3>
+                <div class="chart-container"><canvas id="scrollChart"></canvas></div>
+            </div>
+
+            <!-- UTM Campaigns -->
+            <div class="section">
+                <h3>מעקב קמפיינים (UTM)</h3>
+                <div id="utmTable"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        'use strict';
+
+        var STORAGE_KEY = 'linkhub_analytics';
+        var PASSWORD = 'megged2026';
+        var charts = {};
+
+        // Auth
+        if (sessionStorage.getItem('lh_auth') === '1') {
+            showDashboard();
+        }
+
+        document.getElementById('authPass').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') tryAuth();
+        });
+
+        window.tryAuth = function() {
+            var val = document.getElementById('authPass').value;
+            if (val === PASSWORD) {
+                sessionStorage.setItem('lh_auth', '1');
+                showDashboard();
+            } else {
+                document.getElementById('authError').textContent = 'סיסמה שגויה';
+            }
+        };
+
+        function showDashboard() {
+            document.getElementById('authGate').style.display = 'none';
+            document.getElementById('dashboard').classList.add('visible');
+            render();
+            setInterval(render, 30000);
+        }
+
+        function getData() {
+            try {
+                var d = JSON.parse(localStorage.getItem(STORAGE_KEY));
+                if (d && d.visits) return d;
+            } catch(e) {}
+            return { visits: [], clicks: [], scrollDepth: [], timeOnPage: [], toggles: [] };
+        }
+
+        // Dark mode
+        var savedTheme = localStorage.getItem('megged-theme');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        window.toggleDashTheme = function() {
+            var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+            render();
+        };
+
+        // Section color map
+        var sectionColors = {
+            'default': { bg: 'rgba(74, 93, 35, 0.1)', text: '#4A5D23' },
+        };
+        var colorPalette = [
+            { bg: 'rgba(74, 93, 35, 0.12)', text: '#4A5D23' },
+            { bg: 'rgba(45, 90, 90, 0.12)', text: '#2D5A5A' },
+            { bg: 'rgba(196, 160, 82, 0.15)', text: '#9A7B30' },
+            { bg: 'rgba(139, 156, 111, 0.15)', text: '#5A6B42' },
+            { bg: 'rgba(61, 122, 122, 0.12)', text: '#3D7A7A' },
+        ];
+        var sectionColorIdx = 0;
+
+        function getSectionColor(name) {
+            if (!name) return sectionColors['default'];
+            if (!sectionColors[name]) {
+                sectionColors[name] = colorPalette[sectionColorIdx % colorPalette.length];
+                sectionColorIdx++;
+            }
+            return sectionColors[name];
+        }
+
+        function render() {
+            var data = getData();
+            var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+            document.getElementById('refreshTime').textContent = 'עודכן: ' + new Date().toLocaleTimeString('he-IL');
+
+            // Chart text color
+            var txtColor = isDark ? '#B8B4AC' : '#4A4A4A';
+            var gridColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)';
+            Chart.defaults.color = txtColor;
+
+            // Stats
+            var totalVisits = data.visits.length;
+            var uniqueFP = new Set(data.visits.map(function(v) { return v.fp; })).size;
+            var totalClicks = data.clicks.length;
+
+            // Avg time on page (take max per session)
+            var sessionTimes = {};
+            data.timeOnPage.forEach(function(t) {
+                if (!sessionTimes[t.sid] || t.seconds > sessionTimes[t.sid]) {
+                    sessionTimes[t.sid] = t.seconds;
+                }
+            });
+            var timeVals = Object.values(sessionTimes);
+            var avgTime = timeVals.length ? Math.round(timeVals.reduce(function(a,b){return a+b;},0) / timeVals.length) : 0;
+            var avgTimeStr = avgTime >= 60 ? Math.floor(avgTime/60) + 'ד\' ' + (avgTime%60) + 'ש\'' : avgTime + 'ש\'';
+
+            // Bounce rate: sessions with 0 clicks
+            var sessionsWithClicks = new Set(data.clicks.map(function(c){return c.sid;}));
+            var allSessions = new Set(data.visits.map(function(v){return v.sid;}));
+            var bounceRate = allSessions.size ? Math.round(((allSessions.size - sessionsWithClicks.size) / allSessions.size) * 100) : 0;
+
+            document.getElementById('statsRow').innerHTML =
+                statCard(totalVisits, 'סה"כ ביקורים') +
+                statCard(uniqueFP, 'מבקרים ייחודיים') +
+                statCard(totalClicks, 'קליקים') +
+                statCard(avgTimeStr, 'זמן ממוצע בעמוד') +
+                statCard(bounceRate + '%', 'שיעור נטישה');
+
+            // Visits chart (last 30 days)
+            renderVisitsChart(data, gridColor);
+
+            // Device chart
+            renderDeviceChart(data);
+
+            // Referrer chart
+            renderReferrerChart(data, gridColor);
+
+            // Clicks table
+            renderClicksTable(data);
+
+            // Scroll depth chart
+            renderScrollChart(data, gridColor);
+
+            // UTM table
+            renderUTMTable(data);
+        }
+
+        function statCard(value, label) {
+            return '<div class="stat-card"><div class="value">' + value + '</div><div class="label">' + label + '</div></div>';
+        }
+
+        function renderVisitsChart(data, gridColor) {
+            var days = {};
+            var now = new Date();
+            for (var i = 29; i >= 0; i--) {
+                var d = new Date(now);
+                d.setDate(d.getDate() - i);
+                days[d.toISOString().split('T')[0]] = 0;
+            }
+            data.visits.forEach(function(v) {
+                var day = v.ts.split('T')[0];
+                if (day in days) days[day]++;
+            });
+
+            var labels = Object.keys(days).map(function(d) {
+                var parts = d.split('-');
+                return parts[2] + '/' + parts[1];
+            });
+            var values = Object.values(days);
+
+            if (charts.visits) charts.visits.destroy();
+            charts.visits = new Chart(document.getElementById('visitsChart'), {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'ביקורים',
+                        data: values,
+                        borderColor: '#4A5D23',
+                        backgroundColor: 'rgba(74, 93, 35, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 3,
+                        pointBackgroundColor: '#4A5D23'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: gridColor }, ticks: { stepSize: 1 } },
+                        x: { grid: { display: false }, ticks: { maxRotation: 45, font: { size: 10 } } }
+                    }
+                }
+            });
+        }
+
+        function renderDeviceChart(data) {
+            var counts = { mobile: 0, desktop: 0, tablet: 0 };
+            data.visits.forEach(function(v) {
+                if (v.device && counts.hasOwnProperty(v.device)) counts[v.device]++;
+            });
+
+            if (charts.device) charts.device.destroy();
+            charts.device = new Chart(document.getElementById('deviceChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['נייד', 'מחשב', 'טאבלט'],
+                    datasets: [{
+                        data: [counts.mobile, counts.desktop, counts.tablet],
+                        backgroundColor: ['#4A5D23', '#2D5A5A', '#C4A052'],
+                        borderWidth: 2,
+                        borderColor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#1A2218' : '#FFFFFF'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { padding: 16, font: { size: 13 } } }
+                    }
+                }
+            });
+        }
+
+        function renderReferrerChart(data, gridColor) {
+            var groups = { 'ישיר': 0, 'רשתות חברתיות': 0, 'חיפוש': 0, 'אחר': 0 };
+            var socialDomains = ['facebook', 'instagram', 'twitter', 'linkedin', 'tiktok', 't.co', 'youtube', 'whatsapp', 'wa.me', 'telegram'];
+            var searchDomains = ['google', 'bing', 'yahoo', 'duckduckgo', 'yandex'];
+
+            data.visits.forEach(function(v) {
+                var ref = (v.ref || '').toLowerCase();
+                if (!ref || ref === 'direct') { groups['ישיר']++; return; }
+                var isSocial = socialDomains.some(function(d) { return ref.indexOf(d) > -1; });
+                if (isSocial) { groups['רשתות חברתיות']++; return; }
+                var isSearch = searchDomains.some(function(d) { return ref.indexOf(d) > -1; });
+                if (isSearch) { groups['חיפוש']++; return; }
+                groups['אחר']++;
+            });
+
+            if (charts.referrer) charts.referrer.destroy();
+            charts.referrer = new Chart(document.getElementById('referrerChart'), {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(groups),
+                    datasets: [{
+                        data: Object.values(groups),
+                        backgroundColor: ['#4A5D23', '#2D5A5A', '#C4A052', '#8B9C6F'],
+                        borderRadius: 8,
+                        maxBarThickness: 60
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { beginAtZero: true, grid: { color: gridColor }, ticks: { stepSize: 1 } },
+                        y: { grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        function renderClicksTable(data) {
+            var container = document.getElementById('clicksTable');
+            if (!data.clicks.length) {
+                container.innerHTML = '<div class="empty-state"><div class="icon">&#128065;</div>אין נתוני קליקים עדיין</div>';
+                return;
+            }
+
+            // Aggregate clicks by title
+            var clickMap = {};
+            data.clicks.forEach(function(c) {
+                var key = c.title || c.url;
+                if (!clickMap[key]) {
+                    clickMap[key] = { title: c.title || c.url, url: c.url, section: c.section, count: 0 };
+                }
+                clickMap[key].count++;
+            });
+
+            var rows = Object.values(clickMap).sort(function(a, b) { return b.count - a.count; });
+            var totalVisits = getData().visits.length || 1;
+
+            var html = '<table class="data-table"><thead><tr>' +
+                '<th>קישור</th><th>סקשן</th><th>קליקים</th><th>CTR</th>' +
+                '</tr></thead><tbody>';
+
+            rows.forEach(function(r) {
+                var sc = getSectionColor(r.section);
+                var ctr = Math.round((r.count / totalVisits) * 100);
+                html += '<tr>' +
+                    '<td style="max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + escHtml(r.title) + '</td>' +
+                    '<td><span class="section-badge" style="background:' + sc.bg + ';color:' + sc.text + ';">' + escHtml(r.section || '-') + '</span></td>' +
+                    '<td><strong>' + r.count + '</strong></td>' +
+                    '<td>' + ctr + '%</td>' +
+                    '</tr>';
+            });
+
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+
+        function renderScrollChart(data, gridColor) {
+            var milestones = { 25: 0, 50: 0, 75: 0, 100: 0 };
+            // Count unique sessions per milestone
+            var seen = {};
+            data.scrollDepth.forEach(function(s) {
+                var k = s.sid + '-' + s.depth;
+                if (!seen[k]) {
+                    seen[k] = true;
+                    milestones[s.depth]++;
+                }
+            });
+
+            if (charts.scroll) charts.scroll.destroy();
+            charts.scroll = new Chart(document.getElementById('scrollChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['25%', '50%', '75%', '100%'],
+                    datasets: [{
+                        label: 'מבקרים',
+                        data: [milestones[25], milestones[50], milestones[75], milestones[100]],
+                        backgroundColor: ['#A8B892', '#8B9C6F', '#4A5D23', '#3A4A1B'],
+                        borderRadius: 8,
+                        maxBarThickness: 80
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: gridColor }, ticks: { stepSize: 1 } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        function renderUTMTable(data) {
+            var container = document.getElementById('utmTable');
+            // Collect visits with UTM
+            var utmVisits = data.visits.filter(function(v) { return v.utm; });
+            if (!utmVisits.length) {
+                container.innerHTML = '<div class="empty-state"><div class="icon">&#128640;</div>אין נתוני קמפיינים עדיין<br><span style="font-size:13px;color:var(--text-muted)">הוסף ?utm_source=...&utm_campaign=... לכתובת</span></div>';
+                return;
+            }
+
+            // Aggregate by campaign
+            var campMap = {};
+            utmVisits.forEach(function(v) {
+                var key = (v.utm.utm_source || '-') + '|' + (v.utm.utm_medium || '-') + '|' + (v.utm.utm_campaign || '-');
+                if (!campMap[key]) {
+                    campMap[key] = {
+                        source: v.utm.utm_source || '-',
+                        medium: v.utm.utm_medium || '-',
+                        campaign: v.utm.utm_campaign || '-',
+                        visits: 0,
+                        sessions: new Set()
+                    };
+                }
+                campMap[key].visits++;
+                campMap[key].sessions.add(v.sid);
+            });
+
+            // Count clicks per campaign sessions
+            var sessionClicks = {};
+            data.clicks.forEach(function(c) {
+                sessionClicks[c.sid] = (sessionClicks[c.sid] || 0) + 1;
+            });
+
+            var html = '<table class="data-table"><thead><tr>' +
+                '<th>מקור</th><th>מדיום</th><th>קמפיין</th><th>ביקורים</th><th>קליקים</th>' +
+                '</tr></thead><tbody>';
+
+            Object.values(campMap).sort(function(a,b) { return b.visits - a.visits; }).forEach(function(c) {
+                var clicks = 0;
+                c.sessions.forEach(function(sid) {
+                    clicks += (sessionClicks[sid] || 0);
+                });
+                html += '<tr>' +
+                    '<td>' + escHtml(c.source) + '</td>' +
+                    '<td>' + escHtml(c.medium) + '</td>' +
+                    '<td>' + escHtml(c.campaign) + '</td>' +
+                    '<td>' + c.visits + '</td>' +
+                    '<td>' + clicks + '</td>' +
+                    '</tr>';
+            });
+
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+
+        function escHtml(s) {
+            var div = document.createElement('div');
+            div.textContent = s;
+            return div.innerHTML;
+        }
+
+        // Export CSV
+        window.exportCSV = function() {
+            var data = getData();
+            var lines = [];
+
+            // Visits
+            lines.push('--- VISITS ---');
+            lines.push('Timestamp,Fingerprint,SessionID,Referrer,Device,Screen,Browser,Language,UTM_Source,UTM_Medium,UTM_Campaign,UTM_Content');
+            data.visits.forEach(function(v) {
+                var u = v.utm || {};
+                lines.push([v.ts, v.fp, v.sid, csvVal(v.ref), v.device, v.screen, v.browser, v.lang,
+                    u.utm_source||'', u.utm_medium||'', u.utm_campaign||'', u.utm_content||''].join(','));
+            });
+
+            lines.push('');
+            lines.push('--- CLICKS ---');
+            lines.push('Timestamp,Fingerprint,SessionID,URL,Title,Section');
+            data.clicks.forEach(function(c) {
+                lines.push([c.ts, c.fp, c.sid, csvVal(c.url), csvVal(c.title), csvVal(c.section)].join(','));
+            });
+
+            lines.push('');
+            lines.push('--- SCROLL DEPTH ---');
+            lines.push('Timestamp,Fingerprint,SessionID,Depth');
+            data.scrollDepth.forEach(function(s) {
+                lines.push([s.ts, s.fp, s.sid, s.depth].join(','));
+            });
+
+            lines.push('');
+            lines.push('--- TIME ON PAGE ---');
+            lines.push('Timestamp,Fingerprint,SessionID,Seconds');
+            data.timeOnPage.forEach(function(t) {
+                lines.push([t.ts, t.fp, t.sid, t.seconds].join(','));
+            });
+
+            lines.push('');
+            lines.push('--- TOGGLES ---');
+            lines.push('Timestamp,Fingerprint,SessionID,Type,Value');
+            data.toggles.forEach(function(t) {
+                lines.push([t.ts, t.fp, t.sid, t.type, t.value].join(','));
+            });
+
+            var blob = new Blob(['\uFEFF' + lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'linkhub-analytics-' + new Date().toISOString().split('T')[0] + '.csv';
+            a.click();
+            URL.revokeObjectURL(url);
+        };
+
+        function csvVal(s) {
+            if (!s) return '';
+            s = String(s);
+            if (s.indexOf(',') > -1 || s.indexOf('"') > -1 || s.indexOf('\n') > -1) {
+                return '"' + s.replace(/"/g, '""') + '"';
+            }
+            return s;
+        }
+
+        // Clear data
+        window.clearData = function() {
+            if (confirm('האם אתה בטוח שברצונך למחוק את כל נתוני האנליטיקה? פעולה זו בלתי הפיכה.')) {
+                localStorage.removeItem(STORAGE_KEY);
+                render();
+            }
+        };
+    })();
+    </script>
+</body>
+</html>
