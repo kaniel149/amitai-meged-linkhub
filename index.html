@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amitai Megged | אמיתי מגד - פסיכותרפיה מבוססת ראויות</title>
+    <meta name="description" content="אמיתי מגד - מטפל זוגי ומשפחתי, מחבר, מרצה. טיפול זוגי מבוסס מובחנות וראויות. ספרים, סדנאות, קורסים והכשרות.">
+    <meta property="og:title" content="Amitai Megged | אמיתי מגד">
+    <meta property="og:description" content="פסיכותרפיה מבוססת ראויות - ספרים, סדנאות, קורסים והכשרות">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://link.megged.co.il">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%E2%9C%A8</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Secular+One&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple: #7a00df;
+            --purple-light: #9b3eed;
+            --purple-dark: #5a00a8;
+            --purple-glow: rgba(122, 0, 223, 0.15);
+            --purple-subtle: rgba(122, 0, 223, 0.06);
+            --gold: #c9a84c;
+            --gold-light: #e0c673;
+            --bg: #faf9f7;
+            --bg-card: #ffffff;
+            --text: #1a1a2e;
+            --text-secondary: #5a5a72;
+            --text-muted: #8a8a9a;
+            --border: rgba(0, 0, 0, 0.06);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.04);
+            --shadow-purple: 0 4px 20px rgba(122, 0, 223, 0.15);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Frank Ruhl Libre', 'David', serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Subtle background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 0%, var(--purple-glow) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 100%, rgba(201, 168, 76, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== HEADER / PROFILE ===== */
+        .profile {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .profile-image-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--bg-card);
+            box-shadow: var(--shadow-md), 0 0 0 1px var(--border);
+            background: linear-gradient(135deg, var(--purple), var(--purple-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-family: 'Secular One', sans-serif;
+        }
+
+        .profile-badge {
+            position: absolute;
+            bottom: 4px;
+            left: 4px;
+            background: var(--purple);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            border: 2px solid var(--bg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .profile h1 {
+            font-family: 'Secular One', sans-serif;
+            font-size: 26px;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 2px;
+            letter-spacing: 0.5px;
+        }
+
+        .profile .subtitle-en {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--purple);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .profile .bio {
+            font-size: 15px;
+            color: var(--text-secondary);
+            max-width: 360px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .credentials {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 14px;
+        }
+
+        .credential {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--purple);
+            background: var(--purple-subtle);
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 32px 0 14px;
+            padding-right: 4px;
+        }
+
+        /* ===== LINK CARDS ===== */
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text);
+            transition: all var(--transition);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(122, 0, 223, 0.15);
+        }
+
+        .link-card:active {
+            transform: translateY(0);
+        }
+
+        .link-card .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            background: var(--purple-subtle);
+        }
+
+        .link-card .link-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .link-card .link-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 1px;
+        }
+
+        .link-card .link-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .link-card .arrow {
+            color: var(--text-muted);
+            font-size: 16px;
+            transition: all var(--transition);
+            flex-shrink: 0;
+        }
+
+        .link-card:hover .arrow {
+            color: var(--purple);
+            transform: translateX(-4px);
+        }
+
+        /* Featured card */
+        .link-card.featured {
+            background: linear-gradient(135deg, var(--purple), var(--purple-light));
+            border: none;
+            color: white;
+        }
+
+        .link-card.featured .icon {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .link-card.featured .link-title {
+            color: white;
+        }
+
+        .link-card.featured .link-desc {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .link-card.featured .arrow {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .link-card.featured:hover {
+            box-shadow: var(--shadow-purple);
+        }
+
+        .link-card.featured:hover .arrow {
+            color: white;
+        }
+
+        /* Gold accent card */
+        .link-card.gold .icon {
+            background: rgba(201, 168, 76, 0.12);
+        }
+
+        /* ===== BOOKS GRID ===== */
+        .books-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .book-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 14px 16px;
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--text);
+            transition: all var(--transition);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .book-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(122, 0, 223, 0.15);
+        }
+
+        .book-card .book-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .book-card .book-title {
+            font-family: 'Secular One', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--text);
+        }
+
+        .book-card .book-lang {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== CONTACT BAR ===== */
+        .contact-bar {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 36px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            font-size: 22px;
+            transition: all var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-btn.whatsapp:hover {
+            background: #25D366;
+            border-color: #25D366;
+        }
+
+        .contact-btn.email:hover {
+            background: var(--purple);
+            border-color: var(--purple);
+        }
+
+        .contact-btn.phone:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer p {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 0.3px;
+        }
+
+        .footer .quote {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        /* ===== LANGUAGE TOGGLE ===== */
+        .lang-toggle {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 100;
+        }
+
+        .lang-btn {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .lang-btn:hover {
+            color: var(--purple);
+            border-color: rgba(122, 0, 223, 0.2);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .link-card, .book-card {
+            animation: fadeInUp 0.5s ease-out both;
+        }
+
+        .links .link-card:nth-child(1) { animation-delay: 0.1s; }
+        .links .link-card:nth-child(2) { animation-delay: 0.15s; }
+        .links .link-card:nth-child(3) { animation-delay: 0.2s; }
+        .links .link-card:nth-child(4) { animation-delay: 0.25s; }
+        .links .link-card:nth-child(5) { animation-delay: 0.3s; }
+
+        .books-grid .book-card:nth-child(1) { animation-delay: 0.35s; }
+        .books-grid .book-card:nth-child(2) { animation-delay: 0.4s; }
+        .books-grid .book-card:nth-child(3) { animation-delay: 0.45s; }
+        .books-grid .book-card:nth-child(4) { animation-delay: 0.5s; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 360px) {
+            .container {
+                padding: 30px 16px 50px;
+            }
+            .profile h1 {
+                font-size: 22px;
+            }
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== ENGLISH VERSION ===== */
+        [lang="en"] {
+            direction: ltr;
+        }
+
+        [lang="en"] .link-card:hover .arrow {
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button class="lang-btn" onclick="toggleLang()" id="langBtn">EN</button>
+    </div>
+
+    <div class="container">
+
+        <!-- ===== PROFILE ===== -->
+        <header class="profile">
+            <div class="profile-image-wrapper">
+                <div class="profile-image" id="profileAvatar">
+                    א.מ
+                </div>
+                <div class="profile-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+            </div>
+            <h1 id="profileName">אמיתי מגד</h1>
+            <div class="subtitle-en" id="profileSubtitle">Worthiness Based Psychotherapy</div>
+            <p class="bio" id="profileBio">מטפל זוגי ומשפחתי, מחבר, מרצה ומדריך. ראש תכנית ההכשרה לטיפול זוגי ומשפחתי במכללת תל-חי.</p>
+            <div class="credentials">
+                <span class="credential">MFT</span>
+                <span class="credential">MSW</span>
+                <span class="credential" id="credBooks">5 ספרים</span>
+                <span class="credential" id="credExp">30+ שנות ניסיון</span>
+            </div>
+        </header>
+
+        <!-- ===== WORKSHOPS & PROGRAMS ===== -->
+        <div class="section-label" id="labelPrograms">סדנאות ותכניות</div>
+        <div class="links" id="linksPrograms">
+            <a href="https://www.being-worthy.co.il/" target="_blank" rel="noopener" class="link-card featured">
+                <div class="icon">&#128149;</div>
+                <div class="link-content">
+                    <div class="link-title" data-he="להיות זוג ראוי" data-en="Being a Worthy Couple">להיות זוג ראוי</div>
+                    <div class="link-desc" data-he="סדנה לזוגות - כלים לקשר עמוק ואותנטי" data-en="Workshop for couples - tools for deep authentic connection">סדנה לזוגות - כלים לקשר עמוק ואותנטי</div>
+                </div>
+                <span class="arrow">&larr;</span>
+            </a>
+            <a href="https://www.being-worthy.co.il/" target="_blank" rel="noopener" class="link-card">
+                <div class="icon">&#128131;</div>
+                <div class="link-content">
+                    <div class="link-title" data-he="להיות ראויה" data-en="Being a Worthy Woman">להיות ראויה</div>
+                    <div class="link-desc" data-he="סדנה לנשים - העצמה ואותנטיות" data-en="Workshop for women - empowerment and authenticity">סדנה לנשים - העצמה ואותנטיות</div>
+                </div>
+                <span class="arrow">&larr;</span>
+            </a>
+            <a href="https://worthinesspsychotherapy.com/" target="_blank" rel="noopener" class="link-card">
+                <div class="icon">&#127757;</div>
+                <div class="link-content">
+                    <div class="link-title" data-he="אינטנסיביים בינלאומיים" data-en="International Intensives">אינטנסיביים בינלאומיים</div>
+                    <div class="link-desc" data-he="קופנהגן ואירופה - באנגלית" data-en="Copenhagen & Europe - in English">קופנהגן ואירופה - באנגלית</div>
+                </div>
+                <span class="arrow">&larr;</span>
+            </a>
+        </div>
+
+        <!-- ===== PROFESSIONAL TRAINING ===== -->
+        <div class="section-label" id="labelTraining">הכשרות לאנשי מקצוע</div>
+        <div class="links" id="linksTraining">
+            <a href="https://megged.co.il/" target="_blank" rel="noopener" class="link-card">
+                <div class="icon">&#127891;</div>
+                <div class="link-content">
+                    <div class="link-title" data-he="תכנית תלת-שנתית" data-en="3-Year Training Program">תכנית תלת-שנתית</div>
+                    <div class="link-desc" data-he="הכשרה מקיפה בטיפול זוגי מבוסס מובחנות" data-en="Comprehensive differentiation-based couples therapy training">הכשרה מקיפה בטיפול זוגי מבוסס מובחנות</div>
+                </div>
+                <span class="arrow">&larr;</span>
+            </a>
+            <a href="https://megged.co.il/" target="_blank" rel="noopener" class="link-card">
+                <div class="icon">&#128187;</div>
+                <div class="link-content">
+                    <div class="link-title" data-he="קורסים אונליין" data-en="Online Courses">קורסים אונליין</div>
+                    <div class="link-desc" data-he="קורסים מקצועיים בזום - לאנשי טיפול" data-en="Professional Zoom courses - for therapists">קורסים מקצועיים בזום - לאנשי טיפול</div>
+                </div>
+                <span class="arrow">&larr;</span>
+            </a>
+        </div>
+
+        <!-- ===== BOOKS ===== -->
+        <div class="section-label" id="labelBooks">ספרים</div>
+        <div class="books-grid">
+            <a href="https://www.amazon.com/s?k=amitai+megged" target="_blank" rel="noopener" class="book-card">
+                <div class="book-icon">&#128214;</div>
+                <div class="book-title" data-he="טיפול זוגי מבוסס מובחנות" data-en="Differentiation Based Couple Therapy">טיפול זוגי מבוסס מובחנות</div>
+                <div class="book-lang">HE</div>
+            </a>
+            <a href="https://www.amazon.com/s?k=earning+worthiness+megged" target="_blank" rel="noopener" class="book-card">
+                <div class="book-icon">&#128218;</div>
+                <div class="book-title" data-he="להיות ראוי" data-en="Earning Worthiness">להיות ראוי</div>
+                <div class="book-lang">HE / EN</div>
+            </a>
+            <a href="https://www.being-worthy.co.il/" target="_blank" rel="noopener" class="book-card">
+                <div class="book-icon">&#128155;</div>
+                <div class="book-title" data-he="להיות זוג ראוי" data-en="Being a Worthy Couple">להיות זוג ראוי</div>
+                <div class="book-lang">HE</div>
+            </a>
+            <a href="https://megged.co.il/" target="_blank" rel="noopener" class="book-card">
+                <div class="book-icon">&#128216;</div>
+                <div class="book-title" data-he="ספרים נוספים" data-en="More Books">ספרים נוספים</div>
+                <div class="book-lang" data-he="באתר הראשי" data-en="On main site">באתר הראשי</div>
+            </a>
+        </div>
+
+        <!-- ===== WEBSITES ===== -->
+        <div class="section-label" id="labelSites">אתרים</div>
+        <div class="links" id="linksSites">
+            <a href="https://megged.co.il/" target="_blank" rel="noopener" class="link-card">
+                <div class="icon">&#127968;</div>
+                <div class="link-content">
+                    <div class="link-title" data-he="megged.co.il" data-en="megged.co.il">megged.co.il</div>
+                    <div class="link-desc" data-he="האתר הראשי - מאמרים, בלוג, יצירת קשר" data-en="Main site - articles, blog, contact">האתר הראשי - מאמרים, בלוג, יצירת קשר</div>
+                </div>
+                <span class="arrow">&larr;</span>
+            </a>
+            <a href="https://worthinesspsychotherapy.com/" target="_blank" rel="noopener" class="link-card">
+                <div class="icon">&#127758;</div>
+                <div class="link-content">
+                    <div class="link-title" data-he="Worthiness Psychotherapy" data-en="Worthiness Psychotherapy">Worthiness Psychotherapy</div>
+                    <div class="link-desc" data-he="האתר הבינלאומי - באנגלית" data-en="International site - in English">האתר הבינלאומי - באנגלית</div>
+                </div>
+                <span class="arrow">&larr;</span>
+            </a>
+            <a href="https://www.being-worthy.co.il/" target="_blank" rel="noopener" class="link-card">
+                <div class="icon">&#10024;</div>
+                <div class="link-content">
+                    <div class="link-title" data-he="being-worthy.co.il" data-en="being-worthy.co.il">being-worthy.co.il</div>
+                    <div class="link-desc" data-he="סדנאות לזוגות ולנשים" data-en="Workshops for couples and women">סדנאות לזוגות ולנשים</div>
+                </div>
+                <span class="arrow">&larr;</span>
+            </a>
+        </div>
+
+        <!-- ===== MEDIA ===== -->
+        <div class="section-label" id="labelMedia">מדיה ותוכן</div>
+        <div class="links" id="linksMedia">
+            <a href="https://megged.co.il/" target="_blank" rel="noopener" class="link-card gold">
+                <div class="icon">&#127908;</div>
+                <div class="link-content">
+                    <div class="link-title" data-he="הרצאות וראיונות" data-en="Lectures & Interviews">הרצאות וראיונות</div>
+                    <div class="link-desc" data-he="סרטונים מקצועיים על ראויות וזוגיות" data-en="Professional videos on worthiness and relationships">סרטונים מקצועיים על ראויות וזוגיות</div>
+                </div>
+                <span class="arrow">&larr;</span>
+            </a>
+            <a href="https://megged.co.il/" target="_blank" rel="noopener" class="link-card">
+                <div class="icon">&#128221;</div>
+                <div class="link-content">
+                    <div class="link-title" data-he="בלוג ומאמרים" data-en="Blog & Articles">בלוג ומאמרים</div>
+                    <div class="link-desc" data-he="כתיבה על מערכות יחסים, אינטימיות ומובחנות" data-en="Writing on relationships, intimacy and differentiation">כתיבה על מערכות יחסים, אינטימיות ומובחנות</div>
+                </div>
+                <span class="arrow">&larr;</span>
+            </a>
+        </div>
+
+        <!-- ===== CONTACT ===== -->
+        <div class="contact-bar">
+            <a href="https://wa.me/9720584355744" target="_blank" rel="noopener" class="contact-btn whatsapp" title="WhatsApp">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+            <a href="mailto:amittai@megged.co.il" class="contact-btn email" title="Email">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7a00df" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+            <a href="tel:+972584355744" class="contact-btn phone" title="Phone">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </a>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            <p class="quote" id="footerQuote">&#x201F;ראויות אינה משהו שמגיע לנו - היא משהו שאנחנו מרוויחים דרך המעשים שלנו&#x201E;</p>
+            <p>&copy; 2026 Amitai & Shuly Megged</p>
+        </footer>
+
+    </div>
+
+    <script>
+        let currentLang = 'he';
+
+        const translations = {
+            he: {
+                name: 'אמיתי מגד',
+                bio: 'מטפל זוגי ומשפחתי, מחבר, מרצה ומדריך. ראש תכנית ההכשרה לטיפול זוגי ומשפחתי במכללת תל-חי.',
+                credBooks: '5 ספרים',
+                credExp: '30+ שנות ניסיון',
+                labelPrograms: 'סדנאות ותכניות',
+                labelTraining: 'הכשרות לאנשי מקצוע',
+                labelBooks: 'ספרים',
+                labelSites: 'אתרים',
+                labelMedia: 'מדיה ותוכן',
+                quote: '\u201Fראויות אינה משהו שמגיע לנו - היא משהו שאנחנו מרוויחים דרך המעשים שלנו\u201E',
+                langBtn: 'EN',
+                avatar: 'א.מ'
+            },
+            en: {
+                name: 'Amitai Megged',
+                bio: 'Couples & family therapist, author, lecturer and supervisor. Head of the couple & family therapy training program at Tel Hai College.',
+                credBooks: '5 Books',
+                credExp: '30+ Years',
+                labelPrograms: 'Workshops & Programs',
+                labelTraining: 'Professional Training',
+                labelBooks: 'Books',
+                labelSites: 'Websites',
+                labelMedia: 'Media & Content',
+                quote: '"Worthiness is not something we are entitled to — it is something we earn through our actions."',
+                langBtn: 'עב',
+                avatar: 'A.M'
+            }
+        };
+
+        function toggleLang() {
+            currentLang = currentLang === 'he' ? 'en' : 'he';
+            const t = translations[currentLang];
+            const html = document.documentElement;
+
+            html.setAttribute('lang', currentLang);
+            html.setAttribute('dir', currentLang === 'he' ? 'rtl' : 'ltr');
+
+            document.getElementById('profileName').textContent = t.name;
+            document.getElementById('profileBio').textContent = t.bio;
+            document.getElementById('credBooks').textContent = t.credBooks;
+            document.getElementById('credExp').textContent = t.credExp;
+            document.getElementById('labelPrograms').textContent = t.labelPrograms;
+            document.getElementById('labelTraining').textContent = t.labelTraining;
+            document.getElementById('labelBooks').textContent = t.labelBooks;
+            document.getElementById('labelSites').textContent = t.labelSites;
+            document.getElementById('labelMedia').textContent = t.labelMedia;
+            document.getElementById('footerQuote').textContent = t.quote;
+            document.getElementById('langBtn').textContent = t.langBtn;
+            document.getElementById('profileAvatar').textContent = t.avatar;
+
+            // Update all translatable elements
+            document.querySelectorAll('[data-' + currentLang + ']').forEach(el => {
+                el.textContent = el.getAttribute('data-' + currentLang);
+            });
+
+            // Update arrow direction
+            document.querySelectorAll('.arrow').forEach(el => {
+                el.innerHTML = currentLang === 'he' ? '&larr;' : '&rarr;';
+            });
+        }
+
+        // Smooth scroll behavior
+        document.querySelectorAll('.link-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.willChange = 'transform';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.willChange = 'auto';
+            });
+        });
+    </script>
+
+</body>
+</html>
