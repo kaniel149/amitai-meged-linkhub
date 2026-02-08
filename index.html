@@ -316,6 +316,30 @@
             background-image: url('https://ebook-pro.com/wp-content/uploads/2022/11/Amittai-Megged.jpg');
             filter: grayscale(1) contrast(1.2) brightness(0.7);
             z-index: 2;
+            /* Start fully visible (no mask) - reveal effect applied via JS on mousemove */
+        }
+
+        /* Mobile: hide intellectual layer, show warm image only with nice overlay */
+        @media (hover: none), (pointer: coarse) {
+            .hero-layer-intellectual {
+                display: none !important;
+            }
+            .hero-grid {
+                display: none !important;
+            }
+            .hero-layer-warm {
+                filter: contrast(1.1) brightness(1.05) saturate(1.1);
+            }
+            .hero-gradient-overlay {
+                background: linear-gradient(
+                    to bottom,
+                    rgba(0, 0, 0, 0.25) 0%,
+                    rgba(0, 0, 0, 0.1) 30%,
+                    transparent 50%,
+                    rgba(0, 0, 0, 0.3) 75%,
+                    rgba(0, 0, 0, 0.7) 100%
+                ) !important;
+            }
         }
 
         .hero-grid {
@@ -2341,22 +2365,25 @@
         });
 
         heroSection.addEventListener('mouseleave', function() {
-            // Reset mask to center
-            var cx = heroSection.offsetWidth / 2;
-            var cy = heroSection.offsetHeight / 2;
-            heroRevealLayer.style.maskImage = 'radial-gradient(circle at ' + cx + 'px ' + cy + 'px, transparent 80px, black 220px)';
-            heroRevealLayer.style.webkitMaskImage = 'radial-gradient(circle at ' + cx + 'px ' + cy + 'px, transparent 80px, black 220px)';
+            // Close the reveal hole - shrink transparent area to 0
+            heroRevealLayer.style.transition = 'mask-image 0.5s ease, -webkit-mask-image 0.5s ease';
+            heroRevealLayer.style.maskImage = 'radial-gradient(circle at ' + heroMouseX + 'px ' + heroMouseY + 'px, transparent 0px, black 1px)';
+            heroRevealLayer.style.webkitMaskImage = 'radial-gradient(circle at ' + heroMouseX + 'px ' + heroMouseY + 'px, transparent 0px, black 1px)';
             heroLayers.forEach(function(layer) {
                 layer.style.transform = 'translate(0, 0) scale(1.08)';
             });
+            // Reset transition after animation completes
+            setTimeout(function() {
+                heroRevealLayer.style.transition = '';
+            }, 500);
         });
 
-        // Initialize mask at center
+        // Initialize: no mask hole (intellectual layer fully visible on desktop)
+        // The reveal circle only appears when user moves mouse over the hero
         (function() {
-            var cx = heroSection.offsetWidth / 2;
-            var cy = heroSection.offsetHeight / 2;
-            heroRevealLayer.style.maskImage = 'radial-gradient(circle at ' + cx + 'px ' + cy + 'px, transparent 80px, black 220px)';
-            heroRevealLayer.style.webkitMaskImage = 'radial-gradient(circle at ' + cx + 'px ' + cy + 'px, transparent 80px, black 220px)';
+            // Start with no reveal - user sees only the B&W intellectual layer
+            heroRevealLayer.style.maskImage = 'none';
+            heroRevealLayer.style.webkitMaskImage = 'none';
             heroLayers.forEach(function(layer) {
                 layer.style.transform = 'scale(1.08)';
             });
