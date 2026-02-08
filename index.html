@@ -3065,8 +3065,8 @@
             if (e.target === nlModal) hideNewsletter();
         });
 
-        // Trigger: 20s timeout OR 60% scroll (whichever first)
-        var nlTimer = setTimeout(showNewsletter, 20000);
+        // Trigger: 60s timeout OR 80% scroll (whichever first)
+        var nlTimer = setTimeout(showNewsletter, 60000);
 
         var nlScrollTriggered = false;
         window.addEventListener('scroll', function() {
@@ -3074,7 +3074,7 @@
             var docH = document.documentElement.scrollHeight - window.innerHeight;
             if (docH <= 0) return;
             var pct = window.scrollY / docH;
-            if (pct >= 0.6) {
+            if (pct >= 0.8) {
                 nlScrollTriggered = true;
                 clearTimeout(nlTimer);
                 showNewsletter();
