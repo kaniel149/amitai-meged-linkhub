@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amitai Megged | The Reveal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Assistant:wght@200;300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --cursor-size: 250px;
+            --text-light: #F8F6F0;
+            --text-dark: #1A1A1A;
+            --accent: #C4A052;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+            /* Custom cursor */
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Assistant', sans-serif;
+            background: #0a0a0a;
+        }
+
+        /* The Custom Cursor */
+        .cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, border-color 0.3s;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+        }
+
+        /* Container for the layers */
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Layer Styles */
+        .layer {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .bg-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center 20%;
+            /* Adjusted to focus on face */
+            transition: transform 0.1s ease-out;
+            /* Parallax */
+        }
+
+        /* --- Warm Layer (Bottom) --- */
+        .layer-warm {
+            background-color: #E8E0D0;
+            /* Sand fallback */
+            z-index: 1;
+        }
+
+        .layer-warm .bg-image {
+            background-image: url('https://megged.co.il/wp-content/uploads/2014/06/%D7%90%D7%A0%D7%95%D7%9B%D7%99.jpg');
+            filter: sepia(0.2) contrast(1.1) brightness(1.1);
+        }
+
+        /* --- Intellectual Layer (Top) --- */
+        .layer-intellectual {
+            background-color: #1A1A1A;
+            /* Dark fallback */
+            z-index: 2;
+            /* The mask will be applied via JS specifically to this layer */
+        }
+
+        .layer-intellectual .bg-image {
+            background-image: url('https://ebook-pro.com/wp-content/uploads/2022/11/Amittai-Megged.jpg');
+            filter: grayscale(1) contrast(1.2) brightness(0.8);
+            /* Desaturated, moody */
+        }
+
+        /* Grid Effect (Only on Top Layer) */
+        .grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* UI Content Overlay */
+        .ui-content {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Styles specific to layers for Dynamic Inversion */
+        .layer-intellectual .ui-content {
+            color: var(--text-light);
+        }
+
+        .layer-warm .ui-content {
+            color: var(--text-dark);
+        }
+
+        .layer-warm .ui-content a {
+            color: var(--text-dark);
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .layer-warm .ui-content .social-icon {
+            fill: var(--text-dark);
+        }
+
+        /* Typography */
+        .brand-name h1 {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 80px;
+            font-weight: 300;
+            line-height: 1;
+            letter-spacing: -2px;
+            margin-bottom: 2rem;
+        }
+
+        .brand-name span {
+            display: block;
+        }
+
+        .brand-title {
+            font-family: 'Assistant', sans-serif;
+            font-size: 16px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-top: 20px;
+            font-weight: 300;
+        }
+
+        .nav-link {
+            position: absolute;
+            top: 60px;
+            right: 60px;
+            /* English LTR for position, but site is RTL */
+            left: 60px;
+            /* Actually top-left in RTL if we don't force absolute */
+        }
+
+        /* Handling RTL positioning manually for "Top Right" request */
+        /* Request: Top-Right = Navigation "Megged Center" */
+        /* Request: Top-Left = Name "Amittai Megged" */
+
+        /* Since dir=rtl:
+           Top-Right is the "Start" in visual terms for English, but "End" for Hebrew?
+           "Top-Left corner, place the name 'אמתי מגד'" -> This is flex-start in LTR, but flex-end in RTL?
+           Let's use fixed positioning to be precise.
+        */
+
+        .top-left {
+            position: absolute;
+            top: 60px;
+            left: 60px;
+            text-align: left;
+        }
+
+        .top-right {
+            position: absolute;
+            top: 60px;
+            right: 60px;
+        }
+
+        .bottom-right {
+            position: absolute;
+            bottom: 60px;
+            right: 60px;
+            display: flex;
+            gap: 24px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            text-decoration: none;
+            color: inherit;
+            font-family: 'Assistant', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 12px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 100px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .layer-warm .cta-button:hover {
+            background: #1A1A1A;
+            color: white;
+            border-color: #1A1A1A;
+        }
+
+        .layer-intellectual .cta-button:hover {
+            background: white;
+            color: #1A1A1A;
+            border-color: white;
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            opacity: 0.7;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        .social-icon:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+        }
+
+        /* Mobile adjustment */
+        @media (max-width: 768px) {
+            .brand-name h1 {
+                font-size: 50px;
+            }
+
+            .top-left {
+                top: 30px;
+                left: 30px;
+            }
+
+            .top-right {
+                top: 30px;
+                right: 30px;
+            }
+
+            .bottom-right {
+                bottom: 30px;
+                right: 30px;
+            }
+
+            .cursor-ring,
+            .cursor-dot {
+                display: none;
+            }
+
+            /* No custom cursor on touch */
+            /* Force revealing on center tap or animation? 
+               For now, let's keep it simple. */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Custom Cursor Elements -->
+    <div class="cursor-ring"></div>
+    <div class="cursor-dot"></div>
+
+    <div class="container">
+
+        <!-- LAYER 1: WARM (REVEALED) -->
+        <div class="layer layer-warm">
+            <div class="bg-image"></div>
+            <div class="ui-content">
+                <div class="top-left">
+                    <div class="brand-name">
+                        <h1>אמתי<br>מגד</h1>
+                    </div>
+                    <div class="brand-title">פסיכותרפיה מבוססת ראויות</div>
+                </div>
+
+                <div class="top-right">
+                    <a href="https://megged.co.il" class="cta-button">מרכז מגד</a>
+                </div>
+
+                <div class="bottom-right">
+                    <!-- Facebook -->
+                    <a href="#" class="social-link"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg></a>
+                    <!-- YouTube -->
+                    <a href="#" class="social-link"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg></a>
+                    <!-- WhatsApp -->
+                    <a href="#" class="social-link"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- LAYER 2: INTELLECTUAL (MASKED) -->
+        <div class="layer layer-intellectual" id="revealLayer">
+            <div class="bg-image"></div>
+            <div class="grid-overlay"></div>
+            <div class="ui-content">
+                <div class="top-left">
+                    <div class="brand-name">
+                        <h1>אמתי<br>מגד</h1>
+                    </div>
+                    <div class="brand-title">פסיכותרפיה מבוססת ראויות</div>
+                </div>
+
+                <div class="top-right">
+                    <a href="https://megged.co.il" class="cta-button">מרכז מגד</a>
+                </div>
+
+                <div class="bottom-right">
+                    <!-- Facebook -->
+                    <a href="#" class="social-link"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg></a>
+                    <!-- YouTube -->
+                    <a href="#" class="social-link"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg></a>
+                    <!-- WhatsApp -->
+                    <a href="#" class="social-link"><svg class="social-icon" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const cursorRing = document.querySelector('.cursor-ring');
+        const cursorDot = document.querySelector('.cursor-dot');
+        const revealLayer = document.getElementById('revealLayer');
+        const layers = document.querySelectorAll('.bg-image');
+        let isMoving = false;
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            isMoving = true;
+
+            // Move custom cursor
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top = mouseY + 'px';
+
+            // Allow ring to lag slightly for organic feel
+            requestAnimationFrame(() => {
+                cursorRing.style.left = mouseX + 'px';
+                cursorRing.style.top = mouseY + 'px';
+            });
+
+            updateMask();
+        });
+
+        function updateMask() {
+            // Update Mask
+            const x = mouseX;
+            const y = mouseY;
+
+            // Mask gradient: Transparent at center (reveals bottom layer), Black at edges (shows top layer)
+            const maskSize = 250; // Total diameter of reveal
+            revealLayer.style.maskImage = `radial-gradient(circle at ${x}px ${y}px, transparent 100px, black ${maskSize}px)`;
+            revealLayer.style.webkitMaskImage = `radial-gradient(circle at ${x}px ${y}px, transparent 100px, black ${maskSize}px)`;
+
+            // Parallax Effect
+            const moveX = (window.innerWidth / 2 - mouseX) * 0.015;
+            const moveY = (window.innerHeight / 2 - mouseY) * 0.015;
+
+            layers.forEach(layer => {
+                layer.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+            });
+
+            if (isMoving) {
+                requestAnimationFrame(updateMask);
+                isMoving = false; // Only loop when moving to save battery
+            }
+        }
+
+        // Initial call
+        updateMask();
+
+
+        // Hover effects for cursor
+        const interactables = document.querySelectorAll('a');
+        interactables.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorRing.style.width = '60px';
+                cursorRing.style.height = '60px';
+                cursorRing.style.borderWidth = '2px';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorRing.style.width = '40px';
+                cursorRing.style.height = '40px';
+                cursorRing.style.borderWidth = '1px';
+            });
+        });
+
+    </script>
+</body>
+
+</html>
